@@ -30,7 +30,7 @@ import UIKit
         self.boardCode = boardCode
         self.maxPage = maxPage
         networking = DVBNetworking()
-        privateThreadsArray = []
+        privateThreadsArray = [DVBThread]()
         super.init()
     }
     
@@ -43,16 +43,16 @@ import UIKit
                 DispatchQueue.global(qos: .default).async(execute: {
                     
                     if self.currentPage == 0 {
-                        self.threadsAlreadyLoaded = [:]
+                        self.threadsAlreadyLoaded = [String : Any]()
                     }
                     let threadsArray = resultDict?["threads"] as? [[String: Any]]
                     
                     for thread in threadsArray ?? [[String: Any]]() {
-                        guard let aThread = thread["thread_num"] as? String else {
+                        guard let threadNum = thread["thread_num"] as? String else {
                             continue
                         }
-                        if self.threadsAlreadyLoaded?[aThread] == nil {
-                            self.threadsAlreadyLoaded?[aThread] = ""
+                        if self.threadsAlreadyLoaded?[threadNum] == nil {
+                            self.threadsAlreadyLoaded?[threadNum] = ""
                             let threadPosts = thread["posts"] as? [[String: Any]]
                             let threadDict = threadPosts?.first
                             do {
@@ -77,7 +77,7 @@ import UIKit
                         }
                     }
                     let resultArr = self.privateThreadsArray
-                    self.assignThreadsArray(fromWeak: resultArr)
+                    self.threadsArray = resultArr
                     self.currentPage = self.currentPage + 1
                     if self.currentPage == self.maxPage {
                         self.currentPage = 0
@@ -88,13 +88,9 @@ import UIKit
         })
     }
     
-    func assignThreadsArray(fromWeak array: [DVBThread]?) {
-        threadsArray = array
-    }
-    
     /// Entirely reload threads list in the board
     @objc func reloadBoard(withCompletion completion: @escaping ([DVBThread]?) -> Void) {
-        privateThreadsArray = [DVBThread]()
+        privateThreadsArray.removeAll()
         currentPage = 0
         loadNextPage(withCompletion: { threadsCompletion, error in
             completion(threadsCompletion)
@@ -102,7 +98,7 @@ import UIKit
     }
 
     func emptyThreadsArray() {
-        threadsArray = []
-        privateThreadsArray = []
+        threadsArray?.removeAll()
+        privateThreadsArray.removeAll()
     }
 }
