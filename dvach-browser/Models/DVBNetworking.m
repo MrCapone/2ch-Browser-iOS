@@ -360,8 +360,7 @@ static NSString * const NO_CAPTCHA_ANSWER_CODE = @"disabled";
    }
        failure:^(NSURLSessionDataTask *task, NSError *error)
    {
-     NSString *reponseString = [[NSString alloc] initWithData:(NSData *)task.response encoding:NSUTF8StringEncoding];
-     if ([reponseString.lowercaseString rangeOfString:NO_CAPTCHA_ANSWER_CODE].location == NSNotFound ) {
+      if (error.userInfo[NO_CAPTCHA_ANSWER_CODE] == nil) {
        completion(NO);
      } else {
        completion(YES);
