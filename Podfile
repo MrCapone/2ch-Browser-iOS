@@ -13,7 +13,7 @@ abstract_target 'BasePods' do
 	pod 'AFNetworking', '~> 4.0'
 	pod 'Mantle', '2.1.0'
 	pod 'MWPhotoBrowser', '2.1.0'
-	pod 'OGVKit/WebM', '0.5.13’
+	pod 'OGVKit/WebM', '0.5.13'
 	pod 'PureLayout', '3.0.2'
 	pod 'Texture', '~> 3.0'
 	pod 'TUSafariActivity', '1.0.4'
