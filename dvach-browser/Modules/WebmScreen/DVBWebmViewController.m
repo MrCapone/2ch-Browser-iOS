@@ -10,7 +10,7 @@
 #import <PureLayout/PureLayout.h>
 
 #import "DVBCommon.h"
-#import "DVBConstants.h"
+#import "dvach_browser-Swift.h"
 #import "DVBWebmViewController.h"
 
 @interface DVBWebmViewController () <OGVPlayerDelegate>

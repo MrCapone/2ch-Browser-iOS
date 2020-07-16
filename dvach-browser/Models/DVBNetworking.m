@@ -23,13 +23,13 @@ static NSString * const NO_CAPTCHA_ANSWER_CODE = @"disabled";
 #pragma mark - Boards list
 
 - (void)getBoardsFromNetworkWithCompletion:(void (^)(NSDictionary *))completion {
-  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
   [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObjects: @"text/html", @"application/json",nil]];
-  [manager GET:[DVBUrls boardsList] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
+  [manager GET:[DVBUrls boardsList] parameters:nil headers:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject)
    {
      completion(responseObject);
    }
-       failure:^(AFHTTPRequestOperation *operation, NSError *error)
+       failure:^(NSURLSessionDataTask *task, NSError *error)
    {
      NSLog(@"error: %@", error);
      completion(nil);
@@ -47,19 +47,19 @@ static NSString * const NO_CAPTCHA_ANSWER_CODE = @"disabled";
     pageStringValue = [[NSString alloc] initWithFormat:@"%lu", (unsigned long)page];
   }
   NSString *requestAddress = [[NSString alloc] initWithFormat:@"%@/%@/%@.json", [DVBUrls base], board, pageStringValue];
-  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
   [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObjects: @"application/json", nil]];
 
   weakify(self);
-  [manager GET:requestAddress parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
+    [manager GET:requestAddress parameters:nil headers:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject)
    {
      completion(responseObject, nil);
    }
-       failure:^(AFHTTPRequestOperation *operation, NSError *error)
+       failure:^(NSURLSessionDataTask *task, NSError *error)
    {
      strongify(self);
      if (!self) { return; }
-     NSError *finalError = [self updateErrorWithOperation:operation
+        NSError *finalError = [self updateErrorWithTask:task
                                                  andError:error];
      NSLog(@"error while threads: %@", finalError);
      completion(nil, finalError);
@@ -75,14 +75,14 @@ static NSString * const NO_CAPTCHA_ANSWER_CODE = @"disabled";
     requestAddress = [[NSString alloc] initWithFormat:@"%@/makaba/mobile.fcgi?task=get_thread&board=%@&thread=%@&num=%@", [DVBUrls base], board, threadNum, postNum];
   }
 
-  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
   [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObjects: @"application/json",nil]];
 
-  [manager GET:requestAddress parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
+    [manager GET:requestAddress parameters:nil headers:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject)
    {
      completion(responseObject);
    }
-       failure:^(AFHTTPRequestOperation *operation, NSError *error)
+       failure:^(NSURLSessionDataTask *task, NSError *error)
    {
      NSLog(@"error: %@", error);
      completion(nil);
@@ -94,7 +94,7 @@ static NSString * const NO_CAPTCHA_ANSWER_CODE = @"disabled";
 - (void)getUserCodeWithPasscode:(NSString *)passcode andCompletion:(void (^)(NSString *))completion {
   NSString *requestAddress = [DVBUrls getUsercode];
 
-  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
   [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObjects: @"text/html",nil]];
 
   NSDictionary *params = @{
@@ -102,12 +102,12 @@ static NSString * const NO_CAPTCHA_ANSWER_CODE = @"disabled";
                            @"usercode":passcode
                            };
 
-  [manager POST:requestAddress parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject)
+  [manager POST:requestAddress parameters:params headers:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject)
    {
      NSString *usercode = [self getUsercodeFromCookies];
      completion(usercode);
    }
-        failure:^(AFHTTPRequestOperation *operation, NSError *error)
+        failure:^(NSURLSessionDataTask *task, NSError *error)
    {
      // NSLog(@"error: %@", error);
      // error here is OK we just need to extract usercode from cookies
@@ -172,7 +172,7 @@ static NSString * const NO_CAPTCHA_ANSWER_CODE = @"disabled";
 
   [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObjects: @"application/json",nil]];
 
-  [manager POST:address parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
+  [manager POST:address parameters:params headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
    {
      /**
       *  Added comment field this way because makaba don't handle it right otherwise
@@ -219,6 +219,7 @@ static NSString * const NO_CAPTCHA_ANSWER_CODE = @"disabled";
        }
      }
    }
+        progress:nil
         success:^(NSURLSessionDataTask *task, id responseObject)
    {
      NSString *responseString = [[NSString alloc] initWithData:responseObject
@@ -301,6 +302,8 @@ static NSString * const NO_CAPTCHA_ANSWER_CODE = @"disabled";
 
   [reportManager POST:[DVBUrls reportThread]
            parameters:nil
+              headers:nil
+             progress:nil
               success:^(NSURLSessionDataTask *task, id responseObject)
    {
      NSLog(@"Report sent");
@@ -324,16 +327,18 @@ static NSString * const NO_CAPTCHA_ANSWER_CODE = @"disabled";
     @"num" : postNum
     };
 
-  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
   [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObjects: @"text/html", @"application/json",nil]];
 
   [manager GET:address
     parameters:params
-       success:^(AFHTTPRequestOperation *operation, id responseObject)
+       headers:nil
+      progress:nil
+       success:^(NSURLSessionDataTask *task, id responseObject)
    {
      completion(responseObject);
    }
-       failure:^(AFHTTPRequestOperation *operation, NSError *error)
+       failure:^(NSURLSessionDataTask *task, NSError *error)
    {
      NSLog(@"error while getting new post in thread: %@", error. localizedDescription);
      completion(nil);
@@ -342,18 +347,20 @@ static NSString * const NO_CAPTCHA_ANSWER_CODE = @"disabled";
 
 - (void)canPostWithoutCaptcha:(void (^)(BOOL))completion {
   NSString *address = [[NSString alloc] initWithFormat:@"%@/%@", [DVBUrls base], @"makaba/captcha.fcgi?type=2chaptcha&action=thread"];
-  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
   [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObjects: @"text/plain", nil]];
 
   [manager GET:address
     parameters:nil
-       success:^(AFHTTPRequestOperation *operation, id responseObject)
+    headers:nil
+    progress:nil
+       success:^(NSURLSessionDataTask *task, id responseObject)
    {
      completion(NO);
    }
-       failure:^(AFHTTPRequestOperation *operation, NSError *error)
+       failure:^(NSURLSessionDataTask *task, NSError *error)
    {
-     NSString *reponseString = [[NSString alloc] initWithData:operation.responseData encoding:NSUTF8StringEncoding];
+     NSString *reponseString = [[NSString alloc] initWithData:(NSData *)task.response encoding:NSUTF8StringEncoding];
      if ([reponseString.lowercaseString rangeOfString:NO_CAPTCHA_ANSWER_CODE].location == NSNotFound ) {
        completion(NO);
      } else {
@@ -367,11 +374,13 @@ static NSString * const NO_CAPTCHA_ANSWER_CODE = @"disabled";
   if (threadNum != nil) {
     address = [NSString stringWithFormat:@"%@?thread=%@", address, threadNum];
   }
-  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
 
   [manager GET:address
     parameters:nil
-       success:^(AFHTTPRequestOperation *operation, id responseObject)
+    headers:nil
+    progress:nil
+       success:^(NSURLSessionDataTask *task, id responseObject)
    {
      if (responseObject[@"id"] != nil) {
        NSString *captchaId = responseObject[@"id"];
@@ -382,14 +391,14 @@ static NSString * const NO_CAPTCHA_ANSWER_CODE = @"disabled";
        completion(nil, nil);
      }
    }
-       failure:^(AFHTTPRequestOperation *operation, NSError *error)
+       failure:^(NSURLSessionDataTask *task, NSError *error)
    {
      completion(nil, nil);
    }];
 }
 
 - (NSString * _Nullable)userAgent {
-  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
   NSString *userAgent = [manager.requestSerializer  valueForHTTPHeaderField:NETWORK_HEADER_USERAGENT_KEY];
 
   return userAgent;
@@ -397,9 +406,11 @@ static NSString * const NO_CAPTCHA_ANSWER_CODE = @"disabled";
 
 - (void)tryApCaptchaWithCompletion:(void (^)(NSString * _Nullable))completion {
   NSString *address = [[NSString alloc] initWithFormat:@"%@/%@%@", [DVBUrls base], @"api/captcha/app/id/", AP_CAPTCHA_PUBLIC_KEY];
-  [[AFHTTPRequestOperationManager manager] GET:address
+  [[AFHTTPSessionManager manager] GET:address
                                     parameters:nil
-                                       success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+                                    headers:nil
+                                    progress:nil
+                                       success:^(NSURLSessionDataTask * _Nonnull operation, id  _Nonnull responseObject) {
                                          if (responseObject[@"id"] != nil) {
                                            NSString *appResponseId = responseObject[@"id"];
                                            completion(appResponseId);
@@ -407,15 +418,15 @@ static NSString * const NO_CAPTCHA_ANSWER_CODE = @"disabled";
                                            completion(nil);
                                          }
                                        }
-                                       failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+                                       failure:^(NSURLSessionDataTask * _Nullable operation, NSError * _Nonnull error) {
                                          completion(nil);
                                        }];
 }
 
 #pragma mark - Error handling
 
-- (NSError *)updateErrorWithOperation:(AFHTTPRequestOperation *)operation andError:(NSError *)error {
-  NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)operation.response;
+- (NSError *)updateErrorWithTask:(NSURLSessionDataTask *)task andError:(NSError *)error {
+  NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
   if ([httpResponse respondsToSelector:@selector(allHeaderFields)]) {
     NSDictionary *dictionary = [httpResponse allHeaderFields];
 

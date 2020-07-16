@@ -54,7 +54,7 @@
         _mediaNode.style.height = ASDimensionMakeWithPoints([DVBBoardStyler mediaSize]);
         _mediaNode.URL = [NSURL URLWithString:_thread.thumbnail];
         _mediaNode.delegate = self;
-        _mediaNode.imageModificationBlock = ^UIImage *(UIImage *image) {
+        _mediaNode.imageModificationBlock = ^UIImage *(UIImage *image, ASPrimitiveTraitCollection traitCollection) {
             UIImage *modifiedImage;
             CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
             UIGraphicsBeginImageContextWithOptions(image.size, false, [[UIScreen mainScreen] scale]);

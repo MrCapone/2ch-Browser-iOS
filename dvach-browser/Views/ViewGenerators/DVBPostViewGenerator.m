@@ -53,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
   node.style.width = ASDimensionMakeWithPoints(mediaWidth);
   node.style.height = ASDimensionMakeWithPoints([DVBPostStyler mediaSize]);
   node.URL = [NSURL URLWithString:url];
-  node.imageModificationBlock = ^UIImage *(UIImage *image) {
+  node.imageModificationBlock = ^UIImage *(UIImage *image, ASPrimitiveTraitCollection traitCollection) {
     CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
     CGFloat scale = [[UIScreen mainScreen] scale];
     UIGraphicsBeginImageContextWithOptions(image.size, true, scale);

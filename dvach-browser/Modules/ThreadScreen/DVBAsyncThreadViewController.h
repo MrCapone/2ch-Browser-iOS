@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DVBAsyncThreadViewController : ASViewController
+@interface DVBAsyncThreadViewController : ASDKViewController
 
 - (instancetype)initWithBoardCode:(NSString *)boardCode andThreadNumber:(NSString *)threadNumber andThreadSubject:(NSString *)subject;
 

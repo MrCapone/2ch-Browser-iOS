@@ -8,7 +8,7 @@
 
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 
-@interface DVBAsyncBoardViewController : ASViewController
+@interface DVBAsyncBoardViewController : ASDKViewController
 
 - (instancetype)initBoardCode:(NSString *)boardCode pages:(NSInteger)pages;
 

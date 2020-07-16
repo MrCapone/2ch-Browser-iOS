@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (class, nonatomic, strong, readonly) NSString *dbCollectionThreadPositions;
 @property (nonatomic, strong) YapDatabase *database;
 
-+ (id)sharedDatabase;
++ (DVBDatabaseManager *)sharedDatabase;
 /// Delete all threads from DB
 - (void)clearAll;
 

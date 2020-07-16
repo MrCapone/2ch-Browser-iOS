@@ -11,7 +11,7 @@
 #import "DVBBoardsModel.h"
 #import "DVBAlertGenerator.h"
 #import "UrlNinja.h"
-#import "DVBDefaultsManager.h"
+#import "dvach_browser-Swift.h"
 #import "DVBBoardsViewController.h"
 #import "DVBRouter.h"
 #import "DVBThread.h"
