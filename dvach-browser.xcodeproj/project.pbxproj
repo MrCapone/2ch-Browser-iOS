@@ -774,7 +774,7 @@
 			attributes = {
 				CLASSPREFIX = DVB;
 				LastUpgradeCheck = 0700;
-				ORGANIZATIONNAME = 8of;
+				ORGANIZATIONNAME = MrCapone;
 				TargetAttributes = {
 					84CFC50919E1526E004D0BB8 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -791,6 +791,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				ru,
