@@ -3,7 +3,7 @@
 //  dvach-browser
 //
 //  Created by Dmitry Lukianov on 15.07.2020.
-//  Copyright © 2020 8of. All rights reserved.
+//  Copyright © 2020 MrCapone. All rights reserved.
 //
 
 import CoreData
