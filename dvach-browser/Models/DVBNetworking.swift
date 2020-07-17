@@ -29,15 +29,15 @@ import AFNetworking
     // MARK: - Single Board
     
     /// Get threads for single page of single board
-    func getThreadsWithBoard(_ board: String?, andPage page: UInt, andCompletion completion: @escaping ([String : Any]?, Error?) -> Void) {
-        var pageStringValue: String?
+    func getThreadsWithBoard(_ board: String, andPage page: UInt, andCompletion completion: @escaping ([String : Any]?, Error?) -> Void) {
+        var pageStringValue: String
         
         if page == 0 {
             pageStringValue = "index"
         } else {
-            pageStringValue = String(format: "%lu", UInt(page))
+            pageStringValue = String(page)
         }
-        let requestAddress = "\(DVBUrls.base)/\(board ?? "")/\(pageStringValue ?? "").json"
+        let requestAddress = "\(DVBUrls.base)/\(board)/\(pageStringValue).json"
         let manager = AFHTTPSessionManager()
         manager.responseSerializer.acceptableContentTypes = Set<String>(["application/json"])
         
@@ -57,11 +57,11 @@ import AFNetworking
     // MARK: - Single thread
     
     /// Get posts for single thread
-    @objc func getPostsWithBoard(_ board: String?, andThread threadNum: String?, andPostNum postNum: String?, andCompletion completion: @escaping ([String: Any]?) -> Void) {
+    @objc func getPostsWithBoard(_ board: String, andThread threadNum: String, andPostNum postNum: String?, andCompletion completion: @escaping ([String: Any]?) -> Void) {
         // building URL for getting JSON-thread-answer from multiple strings
-        var requestAddress = "\(DVBUrls.base)/\(board ?? "")/res/\(threadNum ?? "").json"
-        if postNum != nil {
-            requestAddress = "\(DVBUrls.base)/makaba/mobile.fcgi?task=get_thread&board=\(board ?? "")&thread=\(threadNum ?? "")&num=\(postNum ?? "")"
+        var requestAddress = "\(DVBUrls.base)/\(board)/res/\(threadNum).json"
+        if let postNum = postNum {
+            requestAddress = "\(DVBUrls.base)/makaba/mobile.fcgi?task=get_thread&board=\(board)&thread=\(threadNum)&num=\(postNum)"
         }
         
         let manager = AFHTTPSessionManager()
@@ -78,7 +78,7 @@ import AFNetworking
     // MARK: - Passcode
     
     /// Get usercode cookie in exchange to user's passcode
-    func getUserCode(withPasscode passcode: String?, andCompletion completion: @escaping (String?) -> Void) {
+    func getUserCode(withPasscode passcode: String, andCompletion completion: @escaping (String?) -> Void) {
         let requestAddress = DVBUrls.getUsercode
         
         let manager = AFHTTPSessionManager()
@@ -86,14 +86,14 @@ import AFNetworking
         
         let params = [
             "task": "auth",
-            "usercode": passcode ?? ""
+            "usercode": passcode
         ]
         
         manager.post(requestAddress, parameters: params, headers: nil, progress: nil, success: { task, responseObject in
             let usercode = self.getUsercodeFromCookies()
             completion(usercode)
         }, failure: { task, error in
-            // NSLog(@"error: %@", error);
+            // print(error);
             // error here is OK we just need to extract usercode from cookies
             let usercode = self.getUsercodeFromCookies()
             completion(usercode)
@@ -143,7 +143,7 @@ import AFNetworking
             let isUsercodeNotEmpty = !(usercode == "")
             if isUsercodeNotEmpty {
                 // If usercode presented then use as part of the message
-                // NSLog(@"usercode way: %@", usercode);
+                // print("usercode way: \(usercode));
                 params["usercode"] = usercode
             }
         }
@@ -151,7 +151,6 @@ import AFNetworking
         manager.responseSerializer.acceptableContentTypes = Set<String>(["application/json"])
         
         manager.post(address, parameters: params, headers: nil, constructingBodyWith: { formData in
-            //  Converted to Swift 5.2 by Swiftify v5.2.13501 - https://swiftify.com/
             ///  Added comment field this way because makaba don't handle it right otherwise
             ///  and name
             ///  and subject
@@ -199,21 +198,20 @@ import AFNetworking
                     imageIndex += 1
                 }
             }
-        }, progress: nil,
-           success: { task, responseObject in
+        }, progress: nil, success: { task, responseObject in
+            guard let  responseData = responseObject as? Data else {
+                return
+            }
             let responseString = String(
-                data: responseObject as! Data,
-                encoding: .utf8)
-            print("Success: \(responseString ?? "")")
+                data: responseData,
+                encoding: .utf8)!
+            print("Success: \(responseString)")
             
-            let responseData = responseString?.data(using: .utf8)
             var responseDictionary: [AnyHashable : Any]? = nil
             do {
-                if let responseData = responseData {
-                    responseDictionary = try JSONSerialization.jsonObject(
-                        with: responseData,
-                        options: []) as? [AnyHashable : Any]
-                }
+                responseDictionary = try JSONSerialization.jsonObject(
+                    with: responseData,
+                    options: []) as? [AnyHashable : Any]
             } catch {
             }
             ///  Status field from response.
@@ -229,7 +227,7 @@ import AFNetworking
                 // If answer is good - make preparations in current ViewController
                 let successTitle = NSLS("POST_STATUS_SUCCESS")
                 
-                let postNum = "\(responseDictionary!["Num"]!)"
+                let postNum = responseDictionary!["Num"] as! String
                 
                 var messagePostServerAnswer = DVBMessagePostServerAnswer(
                     success: true,
@@ -238,9 +236,9 @@ import AFNetworking
                     andThreadToRedirectTo: nil)
                 
                 if isRedirectAnswer {
-                    let threadNumToRedirect = "\(responseDictionary!["Target"]!)"
+                    let threadNumToRedirect = responseDictionary!["Target"] as! String
                     
-                    if threadNumToRedirect != "" {
+                    if !threadNumToRedirect.isEmpty {
                         messagePostServerAnswer = DVBMessagePostServerAnswer(
                             success: true,
                             andStatusMessage: successTitle,
@@ -275,11 +273,11 @@ import AFNetworking
     // MARK: - Thread reporting
     
     /// Report thread
-    @objc func reportThread(withBoardCode board: String?, andThread thread: String?, andComment comment: String?) {
+    @objc func reportThread(withBoardCode board: String, andThread thread: String, andComment comment: String?) {
         let reportManager = AFHTTPSessionManager()
         reportManager.responseSerializer = AFHTTPResponseSerializer()
         reportManager.responseSerializer.acceptableContentTypes = Set<String>(["text/html"])
-
+        
         reportManager.post(
             DVBUrls.reportThread,
             parameters: nil,
@@ -287,28 +285,27 @@ import AFNetworking
             progress: nil,
             success: { task, responseObject in
                 print("Report sent")
-            },
-            failure: { task, error in
+        }, failure: { task, error in
                 print("Error: \(error)")
-            })
+        })
     }
-
+    
     // MARK: - single post
     
     /// After posting we trying to get our new post and parse it from the scratch
-    func getPostWithBoardCode(_ board: String?, andThread thread: String?, andPostNum postNum: String?, andCompletion completion: @escaping ([[String: Any]]?) -> Void) {
+    func getPostWithBoardCode(_ board: String, andThread thread: String, andPostNum postNum: String, andCompletion completion: @escaping ([[String: Any]]?) -> Void) {
         let address = "\(DVBUrls.base)/\("makaba/mobile.fcgi")"
-
+        
         let params = [
             "task": "get_thread",
-            "board": board ?? "",
-            "thread": thread ?? "",
-            "num": postNum ?? ""
+            "board": board,
+            "thread": thread,
+            "num": postNum
         ]
-
+        
         let manager = AFHTTPSessionManager()
         manager.responseSerializer.acceptableContentTypes = Set<String>(["text/html", "application/json"])
-
+        
         manager.get(
             address,
             parameters: params,
@@ -316,11 +313,10 @@ import AFNetworking
             progress: nil,
             success: { task, responseObject in
                 completion(responseObject as? [[String : Any]])
-            },
-            failure: { task, error in
+        }, failure: { task, error in
                 print("error while getting new post in thread: \(error.localizedDescription)")
                 completion(nil)
-            })
+        })
     }
     
     /// Check if we can post without captcha
@@ -328,7 +324,7 @@ import AFNetworking
         let address = "\(DVBUrls.base)/\("makaba/captcha.fcgi?type=2chaptcha&action=thread")"
         let manager = AFHTTPSessionManager()
         manager.responseSerializer.acceptableContentTypes = Set<String>(["text/plain"])
-
+        
         manager.get(
             address,
             parameters: nil,
@@ -336,23 +332,22 @@ import AFNetworking
             progress: nil,
             success: { task, responseObject in
                 completion(false)
-            },
-            failure: { task, error in
+        }, failure: { task, error in
                 if (error as NSError?)?.userInfo[self.NO_CAPTCHA_ANSWER_CODE] == nil {
                     completion(false)
                 } else {
                     completion(true)
                 }
-            })
+        })
     }
     
     @objc func getCaptchaImageUrl(_ threadNum: String?, andCompletion completion: @escaping (String?, String?) -> Void) {
         var address = "\(DVBUrls.base)/\("api/captcha/2chaptcha/id")"
-        if threadNum != nil {
-            address = "\(address)?thread=\(threadNum ?? "")"
+        if let threadNum = threadNum {
+            address = "\(address)?thread=\(threadNum)"
         }
         let manager = AFHTTPSessionManager()
-
+        
         manager.get(
             address,
             parameters: nil,
@@ -365,16 +360,15 @@ import AFNetworking
                 } else {
                     completion(nil, nil)
                 }
-            },
-            failure: { task, error in
+        }, failure: { task, error in
                 completion(nil, nil)
-            })
+        })
     }
     
     func userAgent() -> String? {
         let manager = AFHTTPSessionManager()
         let userAgent = manager.requestSerializer.value(forHTTPHeaderField: NETWORK_HEADER_USERAGENT_KEY)
-
+        
         return userAgent
     }
     
@@ -392,10 +386,9 @@ import AFNetworking
                 } else {
                     completion(nil)
                 }
-            },
-            failure: { operation, error in
+        }, failure: { operation, error in
                 completion(nil)
-            })
+        })
     }
     
     // MARK: - Error handling
@@ -403,9 +396,9 @@ import AFNetworking
         let httpResponse = task?.response as? HTTPURLResponse
         if httpResponse?.responds(to: #selector(getter: HTTPURLResponse.allHeaderFields)) ?? false {
             let dictionary = httpResponse?.allHeaderFields as? [String: String]
-
+            
             let isServerHeaderCloudflareOne = (dictionary?["Server"] as NSString?)?.range(of: "cloudflare").location != NSNotFound
-
+            
             // Two checks:
             // Have refresh header and it's empty
             // Or have cloudflare ref in Server header
@@ -418,27 +411,27 @@ import AFNetworking
                         secondpartOfUrl = (refreshUrl as NSString?)?.substring(from: NSMaxRange(range))
                     }
                     let fullUrlToReturn = "\(DVBUrls.base)/\(secondpartOfUrl ?? "")"
-
+                    
                     var userInfo = (error as NSError?)?.userInfo
-
+                    
                     var newErrorDictionary = [
                         ERROR_USERINFO_KEY_IS_DDOS_PROTECTION: NSNumber(value: true),
                         ERROR_USERINFO_KEY_URL_TO_CHECK_IN_BROWSER: fullUrlToReturn
                         ] as [String : Any]
-
+                    
                     for (k, v) in userInfo! { newErrorDictionary[k] = v }
                     userInfo = newErrorDictionary
-
-
-
+                    
+                    
+                    
                     let errorToReturn = NSError(domain: ERROR_DOMAIN_APP, code: ERROR_CODE_DDOS_CHECK, userInfo: userInfo)
-
+                    
                     return errorToReturn
                 }
             }
         }
-
+        
         return nil
     }
-
+    
 }

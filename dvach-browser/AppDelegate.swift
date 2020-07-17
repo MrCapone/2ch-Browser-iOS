@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var managedObjectContext: NSManagedObjectContext = {
         let coordinator = self.persistentStoreCoordinator
         
-        let managedObjectContext = NSManagedObjectContext()
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
     }()
