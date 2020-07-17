@@ -8,7 +8,7 @@
 
 #import "DVBConstants.h"
 #import "DVBCaptchaManager.h"
-#import "DVBNetworking.h"
+#import "dvach_browser-Swift.h"
 
 @interface DVBCaptchaManager ()
 

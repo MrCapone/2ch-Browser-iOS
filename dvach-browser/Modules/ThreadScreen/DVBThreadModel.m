@@ -13,7 +13,7 @@
 #import "DVBUrls.h"
 #import "DVBThreadModel.h"
 #import "DVBDatabaseManager.h"
-#import "DVBNetworking.h"
+#import "dvach_browser-Swift.h"
 #import "DVBPost.h"
 #import "DVBPostPreparation.h"
 #import "DateFormatter.h"

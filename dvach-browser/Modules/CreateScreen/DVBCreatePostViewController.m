@@ -11,7 +11,7 @@
 #import "UIImage+DVBImageExtention.h"
 
 #import "DVBConstants.h"
-#import "DVBNetworking.h"
+#import "dvach_browser-Swift.h"
 #import "DVBPost.h"
 #import "DVBComment.h"
 #import "DVBMessagePostServerAnswer.h"

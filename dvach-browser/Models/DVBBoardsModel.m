@@ -12,7 +12,7 @@
 #import "DVBConstants.h"
 #import "NSNotification+DVBBookmarkThreadNotification.h"
 #import "DVBBoard.h"
-#import "DVBNetworking.h"
+#import "dvach_browser-Swift.h"
 #import "DVBValidation.h"
 #import "DVBBoardsModel.h"
 
