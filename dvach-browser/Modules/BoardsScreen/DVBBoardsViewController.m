@@ -8,7 +8,7 @@
 
 #import "DVBCommon.h"
 #import "DVBConstants.h"
-#import "DVBBoardsModel.h"
+#import "dvach_browser-Swift.h"
 #import "DVBAlertGenerator.h"
 #import "UrlNinja.h"
 #import "dvach_browser-Swift.h"

@@ -15,11 +15,11 @@ import AFNetworking
     
     // MARK: - Boards list
     
-    @objc func getBoardsFromNetwork(withCompletion completion: @escaping ([String : Any]?) -> Void) {
+    @objc func getBoardsFromNetwork(withCompletion completion: @escaping ([String: [[String : Any]]]?) -> Void) {
         let manager = AFHTTPSessionManager()
         manager.responseSerializer.acceptableContentTypes = Set<String>(["text/html", "application/json"])
         manager.get(DVBUrls.boardsList, parameters: nil, headers: nil, progress: nil, success: { task, responseObject in
-            completion(responseObject as? [String : Any])
+            completion(responseObject as? [String: [[String : Any]]])
         }, failure: { task, error in
             print("error: \(error)")
             completion(nil)
