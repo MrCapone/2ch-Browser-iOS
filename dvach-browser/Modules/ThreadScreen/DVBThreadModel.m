@@ -7,12 +7,12 @@
 //
 
 #import <Mantle/Mantle.h>
+#import <YapDatabase/YapDatabase.h>
 
 #import "DVBCommon.h"
 #import "DVBConstants.h"
 #import "DVBUrls.h"
 #import "DVBThreadModel.h"
-#import "DVBDatabaseManager.h"
 #import "dvach_browser-Swift.h"
 #import "DVBPost.h"
 #import "DVBPostPreparation.h"
