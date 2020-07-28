@@ -12,6 +12,11 @@
 #import "DVBValidation.h"
 #import "DVBMessagePostServerAnswer.h"
 #import "DVBBoardTableViewCell.h"
+#import "DVBPostViewModel.h"
+#import "DVBAsyncBoardViewController.h"
+#import "DVBAsyncThreadViewController.h"
+#import "DVBCreatePostViewController.h"
+#import "DVBWebmViewController.h"
 
 #import "UIImage+DVBImageExtention.h"
 

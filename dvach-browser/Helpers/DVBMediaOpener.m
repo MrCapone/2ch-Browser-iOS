@@ -10,7 +10,7 @@
 #import "DVBConstants.h"
 #import "DVBMediaOpener.h"
 #import "DVBBrowserViewControllerBuilder.h"
-#import "DVBRouter.h"
+#import "dvach_browser-Swift.h"
 
 @interface DVBMediaOpener ()
 

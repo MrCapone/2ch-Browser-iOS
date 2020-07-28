@@ -18,7 +18,7 @@
 
 #import "DVBMediaOpener.h"
 #import "DVBThreadUIGenerator.h"
-#import "DVBRouter.h"
+#import "dvach_browser-Swift.h"
 #import "DVBComment.h"
 #import "UrlNinja.h"
 
