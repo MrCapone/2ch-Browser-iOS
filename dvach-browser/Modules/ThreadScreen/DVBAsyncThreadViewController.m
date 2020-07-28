@@ -14,7 +14,6 @@
 #import "DVBCreatePostViewControllerDelegate.h"
 #import "DVBPostViewModel.h"
 #import "DVBPostNode.h"
-#import "DVBUrls.h"
 
 #import "DVBMediaOpener.h"
 #import "DVBThreadUIGenerator.h"
