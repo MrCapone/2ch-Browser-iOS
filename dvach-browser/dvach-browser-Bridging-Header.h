@@ -7,7 +7,6 @@
 #import "DVBBoard.h"
 #import "DVBPostPhotoContainerView.h"
 #import "DVBThread.h"
-#import "DVBValidation.h"
 #import "DVBMessagePostServerAnswer.h"
 #import "DVBBoardTableViewCell.h"
 #import "DVBPostViewModel.h"

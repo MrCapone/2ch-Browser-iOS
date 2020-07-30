@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 #import "DVBThreadDelegate.h"
-#import "dvach_browser-Swift.h"
 
 @interface UrlNinja : NSObject
 

@@ -8,7 +8,7 @@
 
 #import "DVBCommon.h"
 #import "DVBAlertGenerator.h"
-#import "DVBValidation.h"
+#import "dvach_browser-Swift.h"
 #import "DVBConstants.h"
 
 @implementation DVBAlertGenerator

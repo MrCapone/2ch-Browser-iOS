@@ -7,6 +7,7 @@
 //
 
 #import "UrlNinja.h"
+#import "dvach_browser-Swift.h"
 
 @implementation UrlNinja
 
