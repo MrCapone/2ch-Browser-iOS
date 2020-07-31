@@ -177,7 +177,7 @@ private let BOARD_CATEGORIES_PLIST_FILENAME = "BoardCategories"
     }
     
     /// Add new board to user list of boards, directly to the Favourite section
-    @objc func addBoard(withBoardId boardId: String?) {
+    @objc func addBoard(withBoardId boardId: String) {
         guard let context = self.context else {
             print("DVBBoardsModel addBoard withBoardId NSManagedObjectContext error")
             fatalError()
@@ -199,7 +199,7 @@ private let BOARD_CATEGORIES_PLIST_FILENAME = "BoardCategories"
         loadAllboards()
     }
     
-    private func addBoard(withBoardId boardId: String?, andBoardName name: String?, andCategoryId categoryId: NSNumber?) {
+    private func addBoard(withBoardId boardId: String, andBoardName name: String, andCategoryId categoryId: NSNumber) {
         guard let context = self.context else {
             print("DVBBoardsModel addBoard withBoardId andBoardName andCategoryId NSManagedObjectContext error")
             fatalError()
@@ -217,7 +217,7 @@ private let BOARD_CATEGORIES_PLIST_FILENAME = "BoardCategories"
     }
     
     /// Adding favourite THREADS
-    func addThread(withUrl url: String?, andThreadTitle title: String?) {
+    func addThread(withUrl url: String, andThreadTitle title: String) {
         guard let context = self.context else {
             print("DVBBoardsModel addThread withUrl andThreadTitle NSManagedObjectContext error")
             fatalError()
@@ -248,14 +248,12 @@ private let BOARD_CATEGORIES_PLIST_FILENAME = "BoardCategories"
         let defaultBoardsArray = NSArray(contentsOfFile: Bundle.main.path(forResource: DEFAULT_BOARDS_PLIST_FILENAME, ofType: "plist") ?? "") as? [[String: Any]]
         
         for board in defaultBoardsArray ?? [] {
-            let boardId = board["boardId"] as? String
-            let boardName = board["name"] as? String
-            let categoryId = board["categoryId"] as? NSNumber
-            
-            addBoard(
+            if let boardId = board["boardId"] as? String, let boardName = board["name"] as? String, let categoryId = board["categoryId"] as? NSNumber {
+                addBoard(
                 withBoardId: boardId,
                 andBoardName: boardName,
                 andCategoryId: categoryId)
+            }
         }
         
         saveChanges()
@@ -284,25 +282,23 @@ private let BOARD_CATEGORIES_PLIST_FILENAME = "BoardCategories"
             for key in boardsDict?.keys ?? [:].keys {
                 let boardsInsideCategory = boardsDict?[key]
                 for singleBoardDictionary in boardsInsideCategory ?? [] {
-                    let boardId = singleBoardDictionary["id"] as? String
-                    let name = singleBoardDictionary["name"] as? String
-                    let pages = singleBoardDictionary["pages"] as? NSNumber
-                    
-                    let board = NSEntityDescription.insertNewObject(forEntityName: DVBBOARD_ENTITY_NAME, into: context) as? DVBBoard
-                    if let board = board {
-                        context.assign(board, to: memoryStore)
-                    }
-                    board?.boardId = boardId
-                    board?.name = name
-                    board?.pages = pages
-                    
-                    if let board = board {
-                        boardsFromNetworkMutableArray.append(board)
-                    }
-                    
-                    // Need to delete this temp created object or it will appear in table after realoading
-                    if let board = board {
-                        context.delete(board)
+                    if let boardId = singleBoardDictionary["id"] as? String, let name = singleBoardDictionary["name"] as? String, let pages = singleBoardDictionary["pages"] as? NSNumber {
+                        let board = NSEntityDescription.insertNewObject(forEntityName: DVBBOARD_ENTITY_NAME, into: context) as? DVBBoard
+                        if let board = board {
+                            context.assign(board, to: memoryStore)
+                        }
+                        board?.boardId = boardId
+                        board?.name = name
+                        board?.pages = pages
+                        
+                        if let board = board {
+                            boardsFromNetworkMutableArray.append(board)
+                        }
+                        
+                        // Need to delete this temp created object or it will appear in table after realoading
+                        if let board = board {
+                            context.delete(board)
+                        }
                     }
                 }
             }
@@ -334,10 +330,9 @@ private let BOARD_CATEGORIES_PLIST_FILENAME = "BoardCategories"
                     if isNameEmpty {
                         let matchedBoardsFromNetwork = completion?.filter( { $0.boardId == boardId } )
                         let matchedBoardsCount = matchedBoardsFromNetwork?.count ?? 0
-                        if matchedBoardsCount > 0 {
-                            let boardFromNetwork = matchedBoardsFromNetwork?[0]
-                            let nameOfTheMatchedBoard = boardFromNetwork?.name
-                            let pages = boardFromNetwork?.pages
+                        if let boardFromNetwork = matchedBoardsFromNetwork?[0], matchedBoardsCount > 0 {
+                            let nameOfTheMatchedBoard = boardFromNetwork.name
+                            let pages = boardFromNetwork.pages
                             board.name = nameOfTheMatchedBoard
                             board.pages = pages
                             self.boardsPrivate?[indexOfCurrentBoard] = board
@@ -450,7 +445,7 @@ private let BOARD_CATEGORIES_PLIST_FILENAME = "BoardCategories"
             let boardCategoryId = board.categoryId
             let favouritesCategoryid = NSNumber(value: 0)
             let isBoardIdEquals = boardId == boardIdToDeleteFromFavourites
-            let isInFavourites = boardCategoryId?.intValue ?? 0 == favouritesCategoryid.intValue
+            let isInFavourites = boardCategoryId.intValue == favouritesCategoryid.intValue
             if isBoardIdEquals && isInFavourites {
                 let alertVC = UIAlertController(title: NSLS("ALERT_CHANGE_FAVOURITE_TITLE"), message: nil, preferredStyle: .alert)
                 
@@ -471,8 +466,7 @@ private let BOARD_CATEGORIES_PLIST_FILENAME = "BoardCategories"
                     style: .default,
                     handler: { action in
                         let field = alertVC.textFields?.first
-                        let text = field?.text
-                        if text == nil || (text == "") {
+                        guard let text = field?.text, !text.isEmpty else {
                             return
                         }
                         let board = self.boardsPrivate?[indexOfCurrentBoard]
@@ -508,7 +502,7 @@ private let BOARD_CATEGORIES_PLIST_FILENAME = "BoardCategories"
             let boardCategoryId = board.categoryId
             let favouritesCategoryid = NSNumber(value: 0)
             let isBoardIdEquals = boardId == boardIdToDeleteFromFavourites
-            let isInFavourites = boardCategoryId?.intValue ?? 0 == favouritesCategoryid.intValue
+            let isInFavourites = boardCategoryId.intValue == favouritesCategoryid.intValue
             if isBoardIdEquals && isInFavourites {
                 boardsPrivate?.remove(at: indexOfCurrentBoard)
                 context.delete(board)
@@ -641,9 +635,9 @@ private let BOARD_CATEGORIES_PLIST_FILENAME = "BoardCategories"
     }
     
     // MARK: - Notifications
-    @objc func processBookmarkThreadNotification(_ notification: NSNotification?) {
+    @objc func processBookmarkThreadNotification(_ notification: NSNotification) {
         addThread(
-            withUrl: notification?.url,
-            andThreadTitle: notification?.title)
+            withUrl: notification.url,
+            andThreadTitle: notification.title)
     }
 }

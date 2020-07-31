@@ -4,7 +4,6 @@
 
 #import "UrlNinja.h"
 
-#import "DVBBoard.h"
 #import "DVBPostPhotoContainerView.h"
 #import "DVBThread.h"
 #import "DVBMessagePostServerAnswer.h"
