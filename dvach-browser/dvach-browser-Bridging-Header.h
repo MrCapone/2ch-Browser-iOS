@@ -5,7 +5,6 @@
 #import "UrlNinja.h"
 
 #import "DVBPostPhotoContainerView.h"
-#import "DVBThread.h"
 #import "DVBMessagePostServerAnswer.h"
 #import "DVBBoardTableViewCell.h"
 #import "DVBPostViewModel.h"
@@ -14,6 +13,10 @@
 #import "DVBCreatePostViewController.h"
 #import "DVBWebmViewController.h"
 
+#import "DateFormatter.h"
+
 #import "UIImage+DVBImageExtention.h"
 
 #import "NSNotification+DVBBookmarkThreadNotification.h"
+
+#import "NSString+HTML.h"

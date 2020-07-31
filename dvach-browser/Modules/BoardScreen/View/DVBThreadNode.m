@@ -8,7 +8,7 @@
 
 #import "DVBConstants.h"
 #import "DVBThreadNode.h"
-#import "DVBThread.h"
+#import "dvach_browser-Swift.h"
 #import "DVBBoardStyler.h"
 
 @interface DVBThreadNode() <ASNetworkImageNodeDelegate>

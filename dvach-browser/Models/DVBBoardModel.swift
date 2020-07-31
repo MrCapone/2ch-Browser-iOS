@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Mantle
 
 @objc class DVBBoardModel: NSObject {
     /// Array contains all threads' OP posts for one page.
