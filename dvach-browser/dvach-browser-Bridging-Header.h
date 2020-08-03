@@ -2,7 +2,7 @@
 //  Use this file to import your target's public headers that you would like to expose to Swift.
 //
 
-#import "UrlNinja.h"
+#import "DVBThreadDelegate.h"
 
 #import "DVBPostPhotoContainerView.h"
 #import "DVBMessagePostServerAnswer.h"

@@ -13,7 +13,7 @@
 #import "DVBPostViewGenerator.h"
 #import "DVBPostStyler.h"
 #import "DVBMediaButtonNode.h"
-#import "UrlNinja.h"
+#import "dvach_browser-Swift.h"
 #import "DateFormatter.h"
 
 NS_ASSUME_NONNULL_BEGIN

@@ -10,7 +10,7 @@
 #import "DVBCommon.h"
 #import "DVBConstants.h"
 #import "DVBPostPreparation.h"
-#import "UrlNinja.h"
+#import "dvach_browser-Swift.h"
 #import "DVBBoardStyler.h"
 
 @interface DVBPostPreparation ()
@@ -184,7 +184,7 @@
             if (url) {
                 UrlNinja *un = [UrlNinja unWithUrl:url];
                 
-                 if ([un.boardId isEqualToString:_boardId] && [un.threadId isEqualToString:_threadId] && un.type == boardThreadPostLink) {
+                 if ([un.boardId isEqualToString:_boardId] && [un.threadId isEqualToString:_threadId] && un.type == linkTypeBoardThreadPostLink) {
                      if (![_repliesToPrivate containsObject:un.postId]) {
                          [_repliesToPrivate addObject:un.postId];
                      }

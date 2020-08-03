@@ -389,10 +389,9 @@ private let BOARD_CATEGORIES_PLIST_FILENAME = "BoardCategories"
         
         // Cunstruct different title for threads in list (if any)
         if indexPath.section == 0 {
-            if let urlNinja = UrlNinja(url: URL(string: boardId ?? "")) {
-                if urlNinja.type == .boardThreadLink {
-                    boardId = "/\(urlNinja.boardId!)/\(urlNinja.threadId!)"
-                }
+            let urlNinja = UrlNinja(url: URL(string: boardId ?? ""))
+            if urlNinja.type == .boardThreadLink {
+                boardId = "/\(urlNinja.boardId!)/\(urlNinja.threadId!)"
             }
         }
         
@@ -520,16 +519,15 @@ private let BOARD_CATEGORIES_PLIST_FILENAME = "BoardCategories"
         let pages = boardMaxPage(by: indexPath)
         
         // Check if deal with thread bookmark and not board
-        if let urlNinja = UrlNinja(url: URL(string: boardId ?? "")) {
-            if urlNinja.type == .boardThreadLink {
-                urlNinja.threadTitle = threadTitle(by: indexPath)
-                boardsModelDelegate?.openThread(with: urlNinja)
-            } else {
-                // board
-                boardsModelDelegate?.open(
-                    withBoardId: boardId,
-                    pages: pages?.intValue ?? 0)
-            }
+        let urlNinja = UrlNinja(url: URL(string: boardId ?? ""))
+        if urlNinja.type == .boardThreadLink {
+            urlNinja.threadTitle = threadTitle(by: indexPath)
+            boardsModelDelegate?.openThread(with: urlNinja)
+        } else {
+            // board
+            boardsModelDelegate?.open(
+                withBoardId: boardId,
+                pages: pages?.intValue ?? 0)
         }
     }
     
