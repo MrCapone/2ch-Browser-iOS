@@ -7,7 +7,7 @@
 //
 
 #import "DVBPostViewModel.h"
-#import "DVBPost.h"
+#import "dvach_browser-Swift.h"
 
 @implementation DVBPostViewModel
 

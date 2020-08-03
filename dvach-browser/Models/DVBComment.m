@@ -7,6 +7,7 @@
 //
 
 #import "DVBComment.h"
+#import "dvach_browser-Swift.h"
 
 @implementation DVBComment
 

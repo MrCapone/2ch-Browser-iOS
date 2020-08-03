@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DVBPost.h"
 
 @interface DVBPostPreparation : NSObject
 /**

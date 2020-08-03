@@ -12,8 +12,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DVBPost.h"
-
 @interface DVBComment : NSObject
 {
     NSString *comment;
