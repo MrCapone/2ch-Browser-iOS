@@ -10,7 +10,7 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
 #import "DVBConstants.h"
-#import "DVBCaptchaManager.h"
+#import "dvach_browser-Swift.h"
 
 #import "DVBDvachCaptchaViewController.h"
 
