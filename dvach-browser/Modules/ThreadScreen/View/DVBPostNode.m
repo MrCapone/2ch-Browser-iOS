@@ -9,7 +9,6 @@
 #import "DVBCommon.h"
 #import "DVBConstants.h"
 #import "DVBPostNode.h"
-#import "DVBPostViewModel.h"
 #import "DVBPostViewGenerator.h"
 #import "DVBPostStyler.h"
 #import "DVBMediaButtonNode.h"
