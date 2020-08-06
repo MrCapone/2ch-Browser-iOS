@@ -24,7 +24,7 @@ import Mantle
     
     convenience override init() {
         NSException(name: NSExceptionName("Need board code"), reason: "Use -[[DVBBoardModel alloc] initWithBoardCode:]", userInfo: nil).raise()
-        self.init()
+        fatalError()
     }
     
     @objc init(boardCode: String, andMaxPage maxPage: Int) {
