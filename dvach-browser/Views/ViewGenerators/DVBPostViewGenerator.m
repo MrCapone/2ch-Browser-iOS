@@ -8,7 +8,7 @@
 
 #import "DVBConstants.h"
 #import "DVBPostViewGenerator.h"
-#import "DVBPostStyler.h"
+#import "dvach_browser-Swift.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
