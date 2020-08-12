@@ -12,7 +12,6 @@
 #import "DVBPostViewGenerator.h"
 #import "DVBMediaButtonNode.h"
 #import "dvach_browser-Swift.h"
-#import "DateFormatter.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -214,7 +213,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Recalc title, assign it and schedule timer
 - (void)updateTitle
 {
-  NSString *dateAgo = [DateFormatter dateFromTimestamp:_timestamp];
+  NSString *dateAgo = [DVDateFormatter dateFromTimestamp:_timestamp];
   NSString *fullTitle = [NSString stringWithFormat:@"%@%@", _title, dateAgo];
   NSDictionary *textAttributes = @
   {

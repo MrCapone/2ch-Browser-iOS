@@ -54,7 +54,7 @@ import Mantle
 
     @objc class func timeSinceFirstPostJSONTransformer() -> ValueTransformer? {
         return MTLValueTransformer.init(usingForwardBlock: { timestamp, success, error in
-            return DateFormatter.date(fromTimestamp: (timestamp as! NSNumber).intValue)
+            return DVDateFormatter.date(fromTimestamp: (timestamp as! NSNumber).intValue)
         })
     }
 

@@ -11,8 +11,6 @@
 #import "DVBCreatePostViewController.h"
 #import "DVBWebmViewController.h"
 
-#import "DateFormatter.h"
-
 #import "UIImage+DVBImageExtention.h"
 
 #import "NSNotification+DVBBookmarkThreadNotification.h"
