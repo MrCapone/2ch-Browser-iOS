@@ -14,7 +14,6 @@
 #import "DVBCreatePostViewControllerDelegate.h"
 #import "DVBPostNode.h"
 
-#import "DVBMediaOpener.h"
 #import "DVBThreadUIGenerator.h"
 #import "dvach_browser-Swift.h"
 

@@ -6,6 +6,7 @@
 
 #import "DVBPostPhotoContainerView.h"
 #import "DVBBoardTableViewCell.h"
+#import "DVBBrowserViewControllerBuilder.h"
 #import "DVBAsyncBoardViewController.h"
 #import "DVBAsyncThreadViewController.h"
 #import "DVBCreatePostViewController.h"
