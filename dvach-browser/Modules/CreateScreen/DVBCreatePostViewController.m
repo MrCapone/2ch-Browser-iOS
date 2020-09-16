@@ -11,7 +11,6 @@
 
 #import "DVBConstants.h"
 #import "dvach_browser-Swift.h"
-#import "DVBCaptchaHelper.h"
 
 #import "DVBCreatePostViewController.h"
 #import "DVBDvachCaptchaViewController.h"
