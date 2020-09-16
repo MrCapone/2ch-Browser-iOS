@@ -12,6 +12,4 @@
 #import "DVBCreatePostViewController.h"
 #import "DVBWebmViewController.h"
 
-#import "NSNotification+DVBBookmarkThreadNotification.h"
-
 #import "NSString+HTML.h"

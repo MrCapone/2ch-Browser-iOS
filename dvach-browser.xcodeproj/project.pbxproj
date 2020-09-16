@@ -34,10 +34,8 @@
 		94A5E4791AF7811D00824347 /* ARChromeActivity-7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5E4751AF7811D00824347 /* ARChromeActivity-7@2x.png */; };
 		94A5E47A1AF7811D00824347 /* ARChromeActivity-7~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5E4761AF7811D00824347 /* ARChromeActivity-7~iPad.png */; };
 		94A5E47B1AF7811D00824347 /* ARChromeActivity-7~iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5E4771AF7811D00824347 /* ARChromeActivity-7~iPad@2x.png */; };
-		94C7272C1BF8907C00F5DA27 /* NSNotification+DVBBookmarkThreadNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C7272B1BF8907C00F5DA27 /* NSNotification+DVBBookmarkThreadNotification.m */; };
 		94CF0CFC1DE08DB000AA3AC8 /* DVBCaptchaHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CF0CFB1DE08DB000AA3AC8 /* DVBCaptchaHelper.m */; };
 		94E8E06D1B20CF88008761C6 /* DVBUrlNinjaTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E8E06C1B20CF88008761C6 /* DVBUrlNinjaTest.m */; };
-		94F454F81BF3E368001B8091 /* UIImage+DVBOpaqueImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F454F71BF3E368001B8091 /* UIImage+DVBOpaqueImage.m */; };
 		94FC06A31C674E8D00813A68 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FC06A21C674E8D00813A68 /* libiconv.tbd */; };
 		A151D35E1EBE5B1C0096E8B6 /* DVBAlertGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = A151D35B1EBE5B1C0096E8B6 /* DVBAlertGenerator.m */; };
 		A151D35F1EBE5B1C0096E8B6 /* DVBPostViewGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = A151D35D1EBE5B1C0096E8B6 /* DVBPostViewGenerator.m */; };
@@ -90,6 +88,8 @@
 		E1C99CEC24D7EC7100B88C94 /* UrlNinja.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C99CEB24D7EC7100B88C94 /* UrlNinja.swift */; };
 		E1C99CEE24D81C2C00B88C94 /* DVBPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C99CED24D81C2C00B88C94 /* DVBPost.swift */; };
 		E1D855AE2511FED400778AE9 /* UIImage+DVBImageExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D855AD2511FED400778AE9 /* UIImage+DVBImageExtention.swift */; };
+		E1D855B0251203B100778AE9 /* UIImage+DVBOpaqueImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D855AF251203B100778AE9 /* UIImage+DVBOpaqueImage.swift */; };
+		E1D855B22512047A00778AE9 /* NSNotification+DVBBookmarkThreadNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D855B12512047A00778AE9 /* NSNotification+DVBBookmarkThreadNotification.swift */; };
 		E1E4AB5224C0649000CB9263 /* DVBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E4AB5124C0649000CB9263 /* DVBConstants.m */; };
 		E1E4AB5424C0668000CB9263 /* DVBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E4AB5324C0668000CB9263 /* DVBConstants.swift */; };
 		E1E4AB5624C0668900CB9263 /* DVBDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E4AB5524C0668900CB9263 /* DVBDefaultsManager.swift */; };
@@ -151,13 +151,9 @@
 		94A5E4751AF7811D00824347 /* ARChromeActivity-7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ARChromeActivity-7@2x.png"; path = "Views/Activities/ARChromeActivity/ARChromeActivity-7@2x.png"; sourceTree = "<group>"; };
 		94A5E4761AF7811D00824347 /* ARChromeActivity-7~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ARChromeActivity-7~iPad.png"; path = "Views/Activities/ARChromeActivity/ARChromeActivity-7~iPad.png"; sourceTree = "<group>"; };
 		94A5E4771AF7811D00824347 /* ARChromeActivity-7~iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ARChromeActivity-7~iPad@2x.png"; path = "Views/Activities/ARChromeActivity/ARChromeActivity-7~iPad@2x.png"; sourceTree = "<group>"; };
-		94C7272A1BF8907C00F5DA27 /* NSNotification+DVBBookmarkThreadNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNotification+DVBBookmarkThreadNotification.h"; path = "Helpers/NSNotification+DVBBookmarkThreadNotification.h"; sourceTree = "<group>"; };
-		94C7272B1BF8907C00F5DA27 /* NSNotification+DVBBookmarkThreadNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNotification+DVBBookmarkThreadNotification.m"; path = "Helpers/NSNotification+DVBBookmarkThreadNotification.m"; sourceTree = "<group>"; };
 		94CF0CFA1DE08DB000AA3AC8 /* DVBCaptchaHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DVBCaptchaHelper.h; path = Helpers/DVBCaptchaHelper.h; sourceTree = "<group>"; };
 		94CF0CFB1DE08DB000AA3AC8 /* DVBCaptchaHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DVBCaptchaHelper.m; path = Helpers/DVBCaptchaHelper.m; sourceTree = "<group>"; };
 		94E8E06C1B20CF88008761C6 /* DVBUrlNinjaTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVBUrlNinjaTest.m; sourceTree = "<group>"; };
-		94F454F61BF3E368001B8091 /* UIImage+DVBOpaqueImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+DVBOpaqueImage.h"; path = "Helpers/UIImage+DVBOpaqueImage.h"; sourceTree = "<group>"; };
-		94F454F71BF3E368001B8091 /* UIImage+DVBOpaqueImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+DVBOpaqueImage.m"; path = "Helpers/UIImage+DVBOpaqueImage.m"; sourceTree = "<group>"; };
 		94FC06A21C674E8D00813A68 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		A151D35A1EBE5B1C0096E8B6 /* DVBAlertGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVBAlertGenerator.h; sourceTree = "<group>"; };
 		A151D35B1EBE5B1C0096E8B6 /* DVBAlertGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVBAlertGenerator.m; sourceTree = "<group>"; };
@@ -241,6 +237,8 @@
 		E1C99CED24D81C2C00B88C94 /* DVBPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DVBPost.swift; path = Models/Objects/DVBPost.swift; sourceTree = "<group>"; };
 		E1D12AA839B911E09F2CB2B6 /* Pods-BasePods-dvach-browserTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BasePods-dvach-browserTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BasePods-dvach-browserTests/Pods-BasePods-dvach-browserTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1D855AD2511FED400778AE9 /* UIImage+DVBImageExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImage+DVBImageExtention.swift"; path = "Helpers/UIImage+DVBImageExtention.swift"; sourceTree = "<group>"; };
+		E1D855AF251203B100778AE9 /* UIImage+DVBOpaqueImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImage+DVBOpaqueImage.swift"; path = "Helpers/UIImage+DVBOpaqueImage.swift"; sourceTree = "<group>"; };
+		E1D855B12512047A00778AE9 /* NSNotification+DVBBookmarkThreadNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NSNotification+DVBBookmarkThreadNotification.swift"; path = "Helpers/NSNotification+DVBBookmarkThreadNotification.swift"; sourceTree = "<group>"; };
 		E1E4AB5024C0649000CB9263 /* DVBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DVBConstants.h; path = Models/DVBConstants.h; sourceTree = "<group>"; };
 		E1E4AB5124C0649000CB9263 /* DVBConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DVBConstants.m; path = Models/DVBConstants.m; sourceTree = "<group>"; };
 		E1E4AB5324C0668000CB9263 /* DVBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DVBConstants.swift; path = Models/DVBConstants.swift; sourceTree = "<group>"; };
@@ -423,10 +421,8 @@
 				E1F978E324E3FD8400A037C9 /* DVDateFormatter.swift */,
 				E1D855AD2511FED400778AE9 /* UIImage+DVBImageExtention.swift */,
 				E150A31F24E690FB00C4AA88 /* DVBMediaOpener.swift */,
-				94F454F61BF3E368001B8091 /* UIImage+DVBOpaqueImage.h */,
-				94F454F71BF3E368001B8091 /* UIImage+DVBOpaqueImage.m */,
-				94C7272A1BF8907C00F5DA27 /* NSNotification+DVBBookmarkThreadNotification.h */,
-				94C7272B1BF8907C00F5DA27 /* NSNotification+DVBBookmarkThreadNotification.m */,
+				E1D855AF251203B100778AE9 /* UIImage+DVBOpaqueImage.swift */,
+				E1D855B12512047A00778AE9 /* NSNotification+DVBBookmarkThreadNotification.swift */,
 				94CF0CFA1DE08DB000AA3AC8 /* DVBCaptchaHelper.h */,
 				94CF0CFB1DE08DB000AA3AC8 /* DVBCaptchaHelper.m */,
 			);
@@ -962,7 +958,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94C7272C1BF8907C00F5DA27 /* NSNotification+DVBBookmarkThreadNotification.m in Sources */,
 				E185AD6324D42C1500EC958B /* DVBThread.swift in Sources */,
 				E17DA0D624DBFB8500ABADFF /* DVBMessagePostServerAnswer.swift in Sources */,
 				94CF0CFC1DE08DB000AA3AC8 /* DVBCaptchaHelper.m in Sources */,
@@ -977,12 +972,12 @@
 				8497BF341AD3F98F001616C2 /* GTMNSString+HTML.m in Sources */,
 				A1FC04411E5A0FA7008C3577 /* DVBThreadModel.m in Sources */,
 				E17AA51824C099A700E886F1 /* DVBBoardModel.swift in Sources */,
-				94F454F81BF3E368001B8091 /* UIImage+DVBOpaqueImage.m in Sources */,
 				A1BDC0B31E6B639E00ACBB36 /* DVBMediaButtonNode.m in Sources */,
 				A151D35E1EBE5B1C0096E8B6 /* DVBAlertGenerator.m in Sources */,
 				E14E085C24DD671100550AA3 /* DVBBoardStyler.swift in Sources */,
 				E1F05E1424CFDEE500D6D3EE /* DVBBoardsModel.swift in Sources */,
 				A151D35F1EBE5B1C0096E8B6 /* DVBPostViewGenerator.m in Sources */,
+				E1D855B0251203B100778AE9 /* UIImage+DVBOpaqueImage.swift in Sources */,
 				A1BDC0CD1E6B650400ACBB36 /* DVBCreatePostScrollView.m in Sources */,
 				E1E4AB5424C0668000CB9263 /* DVBConstants.swift in Sources */,
 				94A17DCA1B335CE50009A002 /* DVBGalleryTransition.m in Sources */,
@@ -1015,6 +1010,7 @@
 				A1FC04441E5A0FF3008C3577 /* DVBPostPreparation.m in Sources */,
 				A1BDC0D61E6B656600ACBB36 /* DVBPostPhotoContainerView.m in Sources */,
 				E185395E24C1794A00CB2D40 /* DVBNetworking.swift in Sources */,
+				E1D855B22512047A00778AE9 /* NSNotification+DVBBookmarkThreadNotification.swift in Sources */,
 				E185396024C17ED100CB2D40 /* DVBCommon.swift in Sources */,
 				A1BDC0D51E6B656600ACBB36 /* DVBPictureToSendPreviewImageView.m in Sources */,
 				E11B9D6324BF4A040061E063 /* AppDelegate.swift in Sources */,
