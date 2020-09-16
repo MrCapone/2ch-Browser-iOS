@@ -8,7 +8,6 @@
 
 #import <AFNetworking/AFNetworking.h>
 #import <Mantle/Mantle.h>
-#import "UIImage+DVBImageExtention.h"
 
 #import "DVBConstants.h"
 #import "dvach_browser-Swift.h"
