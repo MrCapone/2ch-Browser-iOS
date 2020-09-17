@@ -9,7 +9,6 @@
 #import "DVBCommon.h"
 #import "DVBAsyncBoardViewController.h"
 #import "dvach_browser-Swift.h"
-#import "DVBCreatePostViewControllerDelegate.h"
 #import "DVBThreadUIGenerator.h"
 #import "DVBThreadNode.h"
 #import "DVBAlertGenerator.h"

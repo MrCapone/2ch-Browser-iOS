@@ -8,7 +8,7 @@
 
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 
-#import "DVBThreadDelegate.h"
+#import "dvach_browser-Swift.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

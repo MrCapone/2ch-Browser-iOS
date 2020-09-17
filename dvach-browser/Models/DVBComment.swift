@@ -12,12 +12,12 @@ import Foundation
     @objc var comment: String = ""
 
     // MARK: Singleton Methods
-    static let sharedCommentSharedMyManager: DVBComment? = {
+    static let sharedCommentSharedMyManager: DVBComment = {
         var sharedMyManager = DVBComment()
         return sharedMyManager
     }()
 
-    @objc class func sharedComment() -> DVBComment? {
+    @objc class func sharedComment() -> DVBComment {
         return sharedCommentSharedMyManager
     }
 

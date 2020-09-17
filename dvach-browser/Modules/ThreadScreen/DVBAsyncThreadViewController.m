@@ -9,9 +9,7 @@
 #import "DVBAsyncThreadViewController.h"
 #import "DVBCommon.h"
 #import "DVBConstants.h"
-#import "DVBThreadDelegate.h"
 #import "DVBThreadModel.h"
-#import "DVBCreatePostViewControllerDelegate.h"
 #import "DVBPostNode.h"
 
 #import "DVBThreadUIGenerator.h"
