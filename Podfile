@@ -23,3 +23,15 @@ abstract_target 'BasePods' do
   target 'dvach-browser'
   target 'dvach-browserTests'
 end
+
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        if target.name == "PINCache" || target.name == "PINRemoteImage"
+            puts "Updating #{target.name} OTHER_CFLAGS"
+            target.build_configurations.each do |config|
+                config.build_settings['OTHER_CFLAGS'] ||= ['$(inherited)']
+                config.build_settings['OTHER_CFLAGS'] << '-Xclang -fcompatibility-qualified-id-block-type-checking'
+            end
+        end
+    end
+end
