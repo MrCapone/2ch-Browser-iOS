@@ -9,7 +9,6 @@
 #import "DVBCommon.h"
 #import "DVBConstants.h"
 #import "dvach_browser-Swift.h"
-#import "DVBAlertGenerator.h"
 #import "DVBBoardsViewController.h"
 
 static NSInteger const MAXIMUM_SCROLL_UNTIL_SCROLL_TO_TOP_ON_APPEAR = 190.0f;

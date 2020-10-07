@@ -46,7 +46,7 @@ import Foundation
         node.style.height = ASDimensionMakeWithPoints(DVBPostStyler.mediaSize())
         node.url = URL(string: url ?? "")
         node.imageModificationBlock = { [self] image, traitCollection in
-            let rect = CGRect(x: 0, y: 0, width: image.size.width , height: image.size.height ?? 0.0)
+            let rect = CGRect(x: 0, y: 0, width: image.size.width , height: image.size.height )
             let scale = UIScreen.main.scale
             UIGraphicsBeginImageContextWithOptions(image.size , true, scale)
             

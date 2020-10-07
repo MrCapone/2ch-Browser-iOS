@@ -11,7 +11,6 @@
 #import "dvach_browser-Swift.h"
 #import "DVBThreadUIGenerator.h"
 #import "DVBThreadNode.h"
-#import "DVBAlertGenerator.h"
 
 @interface DVBAsyncBoardViewController () <ASTableDataSource, ASTableDelegate, DVBCreatePostViewControllerDelegate>
 
