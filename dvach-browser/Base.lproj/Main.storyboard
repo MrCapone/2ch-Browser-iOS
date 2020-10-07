@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wI0-Z4-0OB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wI0-Z4-0OB">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -118,7 +118,7 @@
                         <outlet property="searchBar" destination="0ET-fH-iEn" id="PEr-tr-b4j"/>
                         <outlet property="searchDisplayController" destination="FoM-QF-CY4" id="8Xz-C9-xTI"/>
                         <outlet property="settingsButton" destination="Nhy-6T-6su" id="Ply-8M-ae5"/>
-                        <segue destination="cAV-CW-ZuA" kind="presentation" identifier="segueToEula" animates="NO" id="0sF-TY-xlc"/>
+                        <segue destination="cAV-CW-ZuA" kind="presentation" identifier="segueToEula" animates="NO" modalPresentationStyle="fullScreen" id="0sF-TY-xlc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1JP-9b-ThQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -146,7 +146,7 @@
             <objects>
                 <navigationController id="cAV-CW-ZuA" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p8v-x3-4N5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -166,11 +166,11 @@
                         <viewControllerLayoutGuide type="bottom" id="r8q-Gj-bOK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Utx-OW-Ovo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a02-0T-2Xt">
-                                <rect key="frame" x="0.0" y="56" width="320" height="492"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -258,7 +258,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mfq-Cv-IWZ" userLabel="Markup Container">
                                                 <rect key="frame" x="29.5" y="130" width="261" height="30"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oaU-q9-XAI" customClass="DVBMarkupButton">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oaU-q9-XAI" customClass="DVBMarkupButton">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                         <state key="normal" title="B"/>
@@ -266,7 +266,7 @@
                                                             <action selector="insertBoldTagAction:" destination="RLY-YJ-MBR" eventType="touchUpInside" id="EeS-d0-UoY"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzk-zM-TG7" customClass="DVBMarkupButton">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzk-zM-TG7" customClass="DVBMarkupButton">
                                                         <rect key="frame" x="45" y="0.0" width="30" height="30"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                         <state key="normal" title="I"/>
@@ -274,7 +274,7 @@
                                                             <action selector="insertItalicTagAction:" destination="RLY-YJ-MBR" eventType="touchUpInside" id="Nkq-CB-EBX"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMe-06-gOU" customClass="DVBMarkupButton">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMe-06-gOU" customClass="DVBMarkupButton">
                                                         <rect key="frame" x="90" y="0.0" width="81" height="30"/>
                                                         <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                         <state key="normal" title="SPOILER">
@@ -284,7 +284,7 @@
                                                             <action selector="insertSpoilerTagAction:" destination="RLY-YJ-MBR" eventType="touchUpInside" id="OQA-UE-b1b"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDM-4F-ZPO" customClass="DVBMarkupButton">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDM-4F-ZPO" customClass="DVBMarkupButton">
                                                         <rect key="frame" x="186" y="0.0" width="30" height="30"/>
                                                         <state key="normal" title="S">
                                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -293,7 +293,7 @@
                                                             <action selector="insertStrikeTagAction:" destination="RLY-YJ-MBR" eventType="touchUpInside" id="Kcq-dD-Oo0"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVb-yP-efC" customClass="DVBMarkupButton">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVb-yP-efC" customClass="DVBMarkupButton">
                                                         <rect key="frame" x="231" y="0.0" width="30" height="30"/>
                                                         <state key="normal" title="U">
                                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -375,7 +375,7 @@
                                                             <constraint firstAttribute="trailing" secondItem="4QQ-eS-dGg" secondAttribute="trailing" id="wmB-Cz-5ov"/>
                                                         </constraints>
                                                     </view>
-                                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvk-ge-8dV">
+                                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvk-ge-8dV">
                                                         <rect key="frame" x="0.0" y="0.0" width="61.5" height="61.5"/>
                                                         <connections>
                                                             <action selector="pickPhotoAction:" destination="Bhq-1W-f9J" eventType="touchUpInside" id="V5j-q0-zXo"/>
@@ -418,7 +418,7 @@
                                                             <constraint firstAttribute="height" constant="22" id="sCP-RJ-Y0E"/>
                                                         </constraints>
                                                     </view>
-                                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVa-tw-g8m">
+                                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVa-tw-g8m">
                                                         <rect key="frame" x="0.0" y="0.0" width="61" height="61.5"/>
                                                         <connections>
                                                             <action selector="pickPhotoAction:" destination="Bhq-1W-f9J" eventType="touchUpInside" id="n5y-sr-3U4"/>
@@ -460,7 +460,7 @@
                                                             <constraint firstItem="6OX-mh-Sjj" firstAttribute="top" secondItem="VVK-jY-Wue" secondAttribute="top" id="yFz-KM-eqK"/>
                                                         </constraints>
                                                     </view>
-                                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98S-fQ-zan">
+                                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98S-fQ-zan">
                                                         <rect key="frame" x="0.0" y="0.0" width="61.5" height="61.5"/>
                                                         <connections>
                                                             <action selector="pickPhotoAction:" destination="Bhq-1W-f9J" eventType="touchUpInside" id="OgD-qp-kHZ"/>
@@ -502,7 +502,7 @@
                                                             <constraint firstAttribute="bottom" secondItem="mxh-fE-7VH" secondAttribute="bottom" id="tom-Hl-udg"/>
                                                         </constraints>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="815-m3-Nve">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="815-m3-Nve">
                                                         <rect key="frame" x="0.0" y="0.0" width="61" height="61.5"/>
                                                         <connections>
                                                             <action selector="pickPhotoAction:" destination="Bhq-1W-f9J" eventType="touchUpInside" id="DrP-14-EKX"/>
