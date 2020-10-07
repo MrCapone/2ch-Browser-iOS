@@ -160,7 +160,7 @@
         <!--Соглашение-->
         <scene sceneID="yjW-uR-5EF">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="yFx-TE-724" customClass="DVBAgreementViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="yFx-TE-724" customClass="DVBAgreementViewController" customModule="dvach_browser" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KSx-4d-bVL"/>
                         <viewControllerLayoutGuide type="bottom" id="r8q-Gj-bOK"/>
@@ -207,13 +207,13 @@
                     <navigationItem key="navigationItem" title="Соглашение" id="e7e-pO-DdX">
                         <barButtonItem key="rightBarButtonItem" title="Принять" id="ouW-Gj-1Po">
                             <connections>
-                                <action selector="agreeAction:" destination="yFx-TE-724" id="Zjq-s4-pdG"/>
+                                <action selector="agreeAction:" destination="yFx-TE-724" id="WNG-GW-yQu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="acceptButton" destination="ouW-Gj-1Po" id="QdL-TJ-Rfh"/>
-                        <outlet property="agreementTextView" destination="a02-0T-2Xt" id="3A2-Oi-EGp"/>
+                        <outlet property="acceptButton" destination="ouW-Gj-1Po" id="vlh-gi-4hl"/>
+                        <outlet property="agreementTextView" destination="a02-0T-2Xt" id="ThT-o2-Kp5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OoT-dv-3cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
