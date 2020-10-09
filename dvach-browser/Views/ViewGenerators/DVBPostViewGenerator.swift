@@ -66,7 +66,7 @@ import Foundation
             }
             let modifiedImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
-            return modifiedImage!
+            return modifiedImage
         }
         return node
     }

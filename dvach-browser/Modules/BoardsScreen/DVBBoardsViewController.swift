@@ -60,13 +60,13 @@ class DVBBoardsViewController: DVBCommonTableViewController, DVBAlertGeneratorDe
         // Table View always have this 0 section - but it's hidden if user not added favourites.
         if tableView.numberOfRows(inSection: 0) != 0 {
             // hide search bar - we can reach it by pull gesture
-            let firstRow = IndexPath(row: 0, section: 0)
+            let firstRow: IndexPath? = IndexPath(row: 0, section: 0)
 
             // Check if first row is existing - or otherwise app will crash
             // and Check if user scrolled table already or not
             if firstRow != nil && (tableView.contentOffset.y < MAXIMUM_SCROLL_UNTIL_SCROLL_TO_TOP_ON_APPEAR) {
                 tableView.scrollToRow(
-                    at: firstRow,
+                    at: firstRow!,
                     at: .top,
                     animated: false)
             }

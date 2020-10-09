@@ -6,7 +6,6 @@
 #import "DVBBrowserViewControllerBuilder.h"
 #import "DVBAsyncBoardViewController.h"
 #import "DVBAsyncThreadViewController.h"
-#import "DVBDvachCaptchaViewController.h"
 #import "DVBContainerForPostElements.h"
 #import "DVBPictureToSendPreviewImageView.h"
 #import "DVBAddPhotoIconImageViewContainer.h"
