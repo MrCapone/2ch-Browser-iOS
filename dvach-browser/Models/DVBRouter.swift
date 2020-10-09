@@ -22,7 +22,7 @@ import UIKit
     }
 
     /// Full thread
-    @objc class func pushThread(from viewController: UIViewController?, board: String, thread: String, subject: String, comment: String) {
+    @objc class func pushThread(from viewController: UIViewController?, board: String, thread: String, subject: String?, comment: String?) {
         let vcSubject = DVBThread.threadControllerTitle(
             fromTitle: subject,
             andNum: thread,

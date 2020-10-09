@@ -16,7 +16,7 @@ import SDWebImage
 @objc class DVBDefaultsManager: NSObject {
     private var networking: DVBNetworking!
     
-    @objc class func initialDefaultsMattersForAppReset() -> [AnyHashable : Any]? {
+    @objc class func initialDefaultsMattersForAppReset() -> [AnyHashable : Any] {
         let defDarkTheme = UserDefaults.standard.bool(forKey: SETTING_ENABLE_DARK_THEME)
         let defClearThreads = UserDefaults.standard.bool(forKey: SETTING_CLEAR_THREADS)
         return [
