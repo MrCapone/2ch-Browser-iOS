@@ -19,6 +19,7 @@ abstract_target 'BasePods' do
 	pod 'TUSafariActivity', '1.0.4'
 	pod 'YapDatabase', '3.0.2'
 	pod 'GTMNSString-HTML', :git => 'https://github.com/siriusdely/GTMNSString-HTML.git'
+	pod 'ARChromeActivity', '~> 1.0'
 
 	# targets
   target 'dvach-browser'

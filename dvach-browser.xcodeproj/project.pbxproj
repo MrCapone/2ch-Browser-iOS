@@ -21,16 +21,6 @@
 		9437FD251B90DFDF004FFB22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9437FD271B90DFDF004FFB22 /* Localizable.strings */; };
 		948239AE1FABC12E008AC562 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948239AD1FABC12D008AC562 /* AVFoundation.framework */; };
 		948239B01FABC132008AC562 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948239AF1FABC132008AC562 /* AVKit.framework */; };
-		94A5E4591AF76E0C00824347 /* ARChromeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A5E4521AF76E0C00824347 /* ARChromeActivity.m */; };
-		94A5E4651AF77E4500824347 /* ARChromeActivity.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5E4601AF77E4500824347 /* ARChromeActivity.png */; };
-		94A5E4661AF77E4500824347 /* ARChromeActivity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5E4611AF77E4500824347 /* ARChromeActivity@2x.png */; };
-		94A5E4671AF77E4500824347 /* ARChromeActivity@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5E4621AF77E4500824347 /* ARChromeActivity@3x.png */; };
-		94A5E4681AF77E4500824347 /* ARChromeActivity~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5E4631AF77E4500824347 /* ARChromeActivity~iPad.png */; };
-		94A5E4691AF77E4500824347 /* ARChromeActivity~iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5E4641AF77E4500824347 /* ARChromeActivity~iPad@2x.png */; };
-		94A5E4781AF7811D00824347 /* ARChromeActivity-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5E4741AF7811D00824347 /* ARChromeActivity-7.png */; };
-		94A5E4791AF7811D00824347 /* ARChromeActivity-7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5E4751AF7811D00824347 /* ARChromeActivity-7@2x.png */; };
-		94A5E47A1AF7811D00824347 /* ARChromeActivity-7~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5E4761AF7811D00824347 /* ARChromeActivity-7~iPad.png */; };
-		94A5E47B1AF7811D00824347 /* ARChromeActivity-7~iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5E4771AF7811D00824347 /* ARChromeActivity-7~iPad@2x.png */; };
 		94E8E06D1B20CF88008761C6 /* DVBUrlNinjaTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E8E06C1B20CF88008761C6 /* DVBUrlNinjaTest.m */; };
 		94FC06A31C674E8D00813A68 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FC06A21C674E8D00813A68 /* libiconv.tbd */; };
 		A154DD9D1EBE49640094ADF2 /* BadBoards.plist in Resources */ = {isa = PBXBuildFile; fileRef = A154DD981EBE49640094ADF2 /* BadBoards.plist */; };
@@ -132,17 +122,6 @@
 		9437FD281B90DFE2004FFB22 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		948239AD1FABC12D008AC562 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		948239AF1FABC132008AC562 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
-		94A5E4511AF76E0C00824347 /* ARChromeActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARChromeActivity.h; path = Views/Activities/ARChromeActivity/ARChromeActivity.h; sourceTree = "<group>"; };
-		94A5E4521AF76E0C00824347 /* ARChromeActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARChromeActivity.m; path = Views/Activities/ARChromeActivity/ARChromeActivity.m; sourceTree = "<group>"; };
-		94A5E4601AF77E4500824347 /* ARChromeActivity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ARChromeActivity.png; path = Views/Activities/ARChromeActivity/ARChromeActivity.png; sourceTree = "<group>"; };
-		94A5E4611AF77E4500824347 /* ARChromeActivity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ARChromeActivity@2x.png"; path = "Views/Activities/ARChromeActivity/ARChromeActivity@2x.png"; sourceTree = "<group>"; };
-		94A5E4621AF77E4500824347 /* ARChromeActivity@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ARChromeActivity@3x.png"; path = "Views/Activities/ARChromeActivity/ARChromeActivity@3x.png"; sourceTree = "<group>"; };
-		94A5E4631AF77E4500824347 /* ARChromeActivity~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ARChromeActivity~iPad.png"; path = "Views/Activities/ARChromeActivity/ARChromeActivity~iPad.png"; sourceTree = "<group>"; };
-		94A5E4641AF77E4500824347 /* ARChromeActivity~iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ARChromeActivity~iPad@2x.png"; path = "Views/Activities/ARChromeActivity/ARChromeActivity~iPad@2x.png"; sourceTree = "<group>"; };
-		94A5E4741AF7811D00824347 /* ARChromeActivity-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ARChromeActivity-7.png"; path = "Views/Activities/ARChromeActivity/ARChromeActivity-7.png"; sourceTree = "<group>"; };
-		94A5E4751AF7811D00824347 /* ARChromeActivity-7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ARChromeActivity-7@2x.png"; path = "Views/Activities/ARChromeActivity/ARChromeActivity-7@2x.png"; sourceTree = "<group>"; };
-		94A5E4761AF7811D00824347 /* ARChromeActivity-7~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ARChromeActivity-7~iPad.png"; path = "Views/Activities/ARChromeActivity/ARChromeActivity-7~iPad.png"; sourceTree = "<group>"; };
-		94A5E4771AF7811D00824347 /* ARChromeActivity-7~iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ARChromeActivity-7~iPad@2x.png"; path = "Views/Activities/ARChromeActivity/ARChromeActivity-7~iPad@2x.png"; sourceTree = "<group>"; };
 		94E8E06C1B20CF88008761C6 /* DVBUrlNinjaTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVBUrlNinjaTest.m; sourceTree = "<group>"; };
 		94FC06A21C674E8D00813A68 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		A154DD981EBE49640094ADF2 /* BadBoards.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = BadBoards.plist; path = Support/BadBoards.plist; sourceTree = "<group>"; };
@@ -415,38 +394,12 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
-		949B76281AF766EF00DDA65F /* Activities */ = {
-			isa = PBXGroup;
-			children = (
-				94A5E4501AF76DF200824347 /* ARChromeActivity */,
-			);
-			name = Activities;
-			sourceTree = "<group>";
-		};
 		94A17DC71B335CD90009A002 /* Transitions */ = {
 			isa = PBXGroup;
 			children = (
 				E1C1815E25302FF90001DB04 /* DVBGalleryTransition.swift */,
 			);
 			name = Transitions;
-			sourceTree = "<group>";
-		};
-		94A5E4501AF76DF200824347 /* ARChromeActivity */ = {
-			isa = PBXGroup;
-			children = (
-				94A5E4741AF7811D00824347 /* ARChromeActivity-7.png */,
-				94A5E4751AF7811D00824347 /* ARChromeActivity-7@2x.png */,
-				94A5E4761AF7811D00824347 /* ARChromeActivity-7~iPad.png */,
-				94A5E4771AF7811D00824347 /* ARChromeActivity-7~iPad@2x.png */,
-				94A5E4511AF76E0C00824347 /* ARChromeActivity.h */,
-				94A5E4521AF76E0C00824347 /* ARChromeActivity.m */,
-				94A5E4601AF77E4500824347 /* ARChromeActivity.png */,
-				94A5E4611AF77E4500824347 /* ARChromeActivity@2x.png */,
-				94A5E4621AF77E4500824347 /* ARChromeActivity@3x.png */,
-				94A5E4631AF77E4500824347 /* ARChromeActivity~iPad.png */,
-				94A5E4641AF77E4500824347 /* ARChromeActivity~iPad@2x.png */,
-			);
-			name = ARChromeActivity;
 			sourceTree = "<group>";
 		};
 		94C42CE61BC9D5AA001F6840 /* Storyboards */ = {
@@ -476,7 +429,6 @@
 			children = (
 				A151D3591EBE5B1C0096E8B6 /* ViewGenerators */,
 				94A17DC71B335CD90009A002 /* Transitions */,
-				949B76281AF766EF00DDA65F /* Activities */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -744,21 +696,12 @@
 			files = (
 				A1BDC0EF1E6B669600ACBB36 /* DVBDvachCaptchaViewController.xib in Resources */,
 				A154DD9F1EBE49640094ADF2 /* DefaultBoards.plist in Resources */,
-				94A5E47A1AF7811D00824347 /* ARChromeActivity-7~iPad.png in Resources */,
-				94A5E4691AF77E4500824347 /* ARChromeActivity~iPad@2x.png in Resources */,
 				A1BDC0DB1E6B65AE00ACBB36 /* DVBLoadingStatusView.xib in Resources */,
 				84CFC51919E1526E004D0BB8 /* Main.storyboard in Resources */,
-				94A5E47B1AF7811D00824347 /* ARChromeActivity-7~iPad@2x.png in Resources */,
-				94A5E4791AF7811D00824347 /* ARChromeActivity-7@2x.png in Resources */,
-				94A5E4661AF77E4500824347 /* ARChromeActivity@2x.png in Resources */,
 				84CFC51B19E1526E004D0BB8 /* Images.xcassets in Resources */,
-				94A5E4681AF77E4500824347 /* ARChromeActivity~iPad.png in Resources */,
 				A154DDA11EBE49640094ADF2 /* Settings.bundle in Resources */,
-				94A5E4651AF77E4500824347 /* ARChromeActivity.png in Resources */,
 				A154DD9D1EBE49640094ADF2 /* BadBoards.plist in Resources */,
-				94A5E4781AF7811D00824347 /* ARChromeActivity-7.png in Resources */,
 				9437FD251B90DFDF004FFB22 /* Localizable.strings in Resources */,
-				94A5E4671AF77E4500824347 /* ARChromeActivity@3x.png in Resources */,
 				846D12A11BF0AE7C00BC523B /* Launch Screen.storyboard in Resources */,
 				A154DD9E1EBE49640094ADF2 /* BoardCategories.plist in Resources */,
 			);
@@ -783,6 +726,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BasePods-dvach-browserTests/Pods-BasePods-dvach-browserTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/ARChromeActivity/ARChromeActivity.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMNSString-HTML/GTMNSString_HTML.framework",
@@ -807,6 +751,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ARChromeActivity.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMNSString_HTML.framework",
@@ -877,6 +822,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BasePods-dvach-browser/Pods-BasePods-dvach-browser-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/ARChromeActivity/ARChromeActivity.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMNSString-HTML/GTMNSString_HTML.framework",
@@ -901,6 +847,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ARChromeActivity.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMNSString_HTML.framework",
@@ -970,7 +917,6 @@
 				E15E1379252C39960083BFCD /* DVBPostViewGenerator.swift in Sources */,
 				A1BDC0E61E6B663E00ACBB36 /* DVBCommonTableViewController.m in Sources */,
 				E1410FE125135422001EDAB6 /* DVBCreatePostViewControllerDelegate.swift in Sources */,
-				94A5E4591AF76E0C00824347 /* ARChromeActivity.m in Sources */,
 				A1FC043E1E5A0F7A008C3577 /* DVBAsyncThreadViewController.m in Sources */,
 				A1BDC0CA1E6B650400ACBB36 /* DVBAddPhotoIconImageView.m in Sources */,
 				E1F05E1924CFE17C00D6D3EE /* DVBRouter.swift in Sources */,
