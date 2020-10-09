@@ -10,7 +10,7 @@
 
 #import "DVBBrowserViewControllerBuilder.h"
 
-#import "DVBGalleryTransition.h"
+#import "dvach_browser-Swift.h"
 
 static CGFloat const MIN_DURATION = .2;
 static CGFloat const MAX_DURATION = .6;
