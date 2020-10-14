@@ -8,14 +8,14 @@
 
 import AsyncDisplayKit
 
-@objc class DVBThreadNode: ASCellNode, ASNetworkImageNodeDelegate {
+class DVBThreadNode: ASCellNode, ASNetworkImageNodeDelegate {
     private var thread: DVBThread!
     private var postNode: ASTextNode!
     private var mediaNode: ASNetworkImageNode!
     private var borderNode: ASDisplayNode!
     
     // MARK: - Lifecycle
-    @objc init(thread: DVBThread) {
+    init(thread: DVBThread) {
         super.init()
         
         self.thread = thread

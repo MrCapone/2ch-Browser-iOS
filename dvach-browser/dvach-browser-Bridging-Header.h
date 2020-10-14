@@ -3,7 +3,6 @@
 //
 
 #import "DVBBrowserViewControllerBuilder.h"
-#import "DVBAsyncBoardViewController.h"
 #import "DVBAsyncThreadViewController.h"
-
+#import "DVBThreadUIGenerator.h"
 #import "NSString+HTML.h"

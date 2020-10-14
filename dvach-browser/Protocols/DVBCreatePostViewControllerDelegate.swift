@@ -12,5 +12,5 @@ import Foundation
     /// Open thread after creating
     @objc func openThred(withCreatedThread threadNum: String?)
     /// Update thread after posting
-    @objc func updateThreadAfterPosting()
+    @objc optional func updateThreadAfterPosting()
 }

@@ -321,7 +321,7 @@ import Mantle
             weak var strongDelegate = createPostViewControllerDelegate
             // Update thread in any case (was post successfull or not)
             if strongDelegate?.responds(to: #selector(DVBCreatePostViewControllerDelegate.updateThreadAfterPosting)) ?? false {
-                strongDelegate?.updateThreadAfterPosting()
+                strongDelegate?.updateThreadAfterPosting!()
             }
         }
         dismiss(animated: true)

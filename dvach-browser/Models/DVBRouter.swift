@@ -13,12 +13,10 @@ import UIKit
 
 @objc class DVBRouter: NSObject {
     @objc class func pushBoard(from viewController: UIViewController?, boardCode: String, pages: Int) {
-        let boardViewController = DVBAsyncBoardViewController.init(boardCode: boardCode, pages: pages)
-        if let boardViewController = boardViewController {
-            viewController?.navigationController?.pushViewController(
-                boardViewController,
-                animated: true)
-        }
+        let boardViewController = DVBAsyncBoardViewController.init(boardCode, pages: pages)
+        viewController?.navigationController?.pushViewController(
+            boardViewController,
+            animated: true)
     }
 
     /// Full thread
