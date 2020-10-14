@@ -10,7 +10,6 @@
 #import "DVBAsyncBoardViewController.h"
 #import "dvach_browser-Swift.h"
 #import "DVBThreadUIGenerator.h"
-#import "DVBThreadNode.h"
 
 @interface DVBAsyncBoardViewController () <ASTableDataSource, ASTableDelegate, DVBCreatePostViewControllerDelegate>
 

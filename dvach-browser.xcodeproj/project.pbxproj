@@ -27,7 +27,6 @@
 		A154DD9E1EBE49640094ADF2 /* BoardCategories.plist in Resources */ = {isa = PBXBuildFile; fileRef = A154DD991EBE49640094ADF2 /* BoardCategories.plist */; };
 		A154DD9F1EBE49640094ADF2 /* DefaultBoards.plist in Resources */ = {isa = PBXBuildFile; fileRef = A154DD9A1EBE49640094ADF2 /* DefaultBoards.plist */; };
 		A154DDA11EBE49640094ADF2 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A154DD9C1EBE49640094ADF2 /* Settings.bundle */; };
-		A1BDC0AB1E6B571700ACBB36 /* DVBThreadNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDC0AA1E6B571700ACBB36 /* DVBThreadNode.m */; };
 		A1BDC0B31E6B639E00ACBB36 /* DVBMediaButtonNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDC0B01E6B639E00ACBB36 /* DVBMediaButtonNode.m */; };
 		A1BDC0B41E6B639E00ACBB36 /* DVBPostNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDC0B21E6B639E00ACBB36 /* DVBPostNode.m */; };
 		A1BDC0B71E6B63F700ACBB36 /* DVBAsyncBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDC0B61E6B63F700ACBB36 /* DVBAsyncBoardViewController.m */; };
@@ -61,6 +60,7 @@
 		E185396024C17ED100CB2D40 /* DVBCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E185395F24C17ED100CB2D40 /* DVBCommon.swift */; };
 		E185AD6124D4299D00EC958B /* DVBBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E185AD6024D4299D00EC958B /* DVBBoard.swift */; };
 		E185AD6324D42C1500EC958B /* DVBThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = E185AD6224D42C1500EC958B /* DVBThread.swift */; };
+		E1899B262536EF7800A2DF01 /* DVBThreadNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1899B252536EF7800A2DF01 /* DVBThreadNode.swift */; };
 		E1902DFE24D2C44300FC7F6C /* DVBValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1902DFD24D2C44300FC7F6C /* DVBValidation.swift */; };
 		E1986D66253574D100CCE5FF /* DVBMarkupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1986D65253574D100CCE5FF /* DVBMarkupButton.swift */; };
 		E1986D6C253576EC00CCE5FF /* DVBPictureToSendPreviewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1986D6B253576EC00CCE5FF /* DVBPictureToSendPreviewImageView.swift */; };
@@ -129,8 +129,6 @@
 		A154DD9A1EBE49640094ADF2 /* DefaultBoards.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = DefaultBoards.plist; path = Support/DefaultBoards.plist; sourceTree = "<group>"; };
 		A154DD9B1EBE49640094ADF2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Support/Info.plist; sourceTree = "<group>"; };
 		A154DD9C1EBE49640094ADF2 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Support/Settings.bundle; sourceTree = "<group>"; };
-		A1BDC0A91E6B571700ACBB36 /* DVBThreadNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DVBThreadNode.h; path = Modules/BoardScreen/View/DVBThreadNode.h; sourceTree = "<group>"; };
-		A1BDC0AA1E6B571700ACBB36 /* DVBThreadNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DVBThreadNode.m; path = Modules/BoardScreen/View/DVBThreadNode.m; sourceTree = "<group>"; };
 		A1BDC0AF1E6B639E00ACBB36 /* DVBMediaButtonNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DVBMediaButtonNode.h; path = Modules/ThreadScreen/View/DVBMediaButtonNode.h; sourceTree = "<group>"; };
 		A1BDC0B01E6B639E00ACBB36 /* DVBMediaButtonNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DVBMediaButtonNode.m; path = Modules/ThreadScreen/View/DVBMediaButtonNode.m; sourceTree = "<group>"; };
 		A1BDC0B11E6B639E00ACBB36 /* DVBPostNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DVBPostNode.h; path = Modules/ThreadScreen/View/DVBPostNode.h; sourceTree = "<group>"; };
@@ -176,6 +174,7 @@
 		E185395F24C17ED100CB2D40 /* DVBCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DVBCommon.swift; path = Models/DVBCommon.swift; sourceTree = "<group>"; };
 		E185AD6024D4299D00EC958B /* DVBBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DVBBoard.swift; path = Models/Objects/DVBBoard.swift; sourceTree = "<group>"; };
 		E185AD6224D42C1500EC958B /* DVBThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DVBThread.swift; path = Models/Objects/DVBThread.swift; sourceTree = "<group>"; };
+		E1899B252536EF7800A2DF01 /* DVBThreadNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DVBThreadNode.swift; path = Modules/BoardScreen/View/DVBThreadNode.swift; sourceTree = "<group>"; };
 		E1902DFD24D2C44300FC7F6C /* DVBValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DVBValidation.swift; path = Models/DVBValidation.swift; sourceTree = "<group>"; };
 		E1986D65253574D100CCE5FF /* DVBMarkupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DVBMarkupButton.swift; path = Modules/CreateScreen/View/DVBMarkupButton.swift; sourceTree = "<group>"; };
 		E1986D6B253576EC00CCE5FF /* DVBPictureToSendPreviewImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DVBPictureToSendPreviewImageView.swift; path = Modules/CreateScreen/View/DVBPictureToSendPreviewImageView.swift; sourceTree = "<group>"; };
@@ -524,8 +523,7 @@
 		A1E118891E63F71B0075AB38 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A1BDC0A91E6B571700ACBB36 /* DVBThreadNode.h */,
-				A1BDC0AA1E6B571700ACBB36 /* DVBThreadNode.m */,
+				E1899B252536EF7800A2DF01 /* DVBThreadNode.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -861,7 +859,6 @@
 				E1410FDF251353E5001EDAB6 /* DVBThreadDelegate.swift in Sources */,
 				E17DA0D624DBFB8500ABADFF /* DVBMessagePostServerAnswer.swift in Sources */,
 				A1FC044D1E5A1064008C3577 /* DVBBrowserViewControllerBuilder.m in Sources */,
-				A1BDC0AB1E6B571700ACBB36 /* DVBThreadNode.m in Sources */,
 				E1F05E1B24D00ABB00D6D3EE /* DVBDatabaseManager.swift in Sources */,
 				9432BEF61AC821B40015CA9F /* dvach-browser.xcdatamodeld in Sources */,
 				E1D855AE2511FED400778AE9 /* UIImage+DVBImageExtention.swift in Sources */,
@@ -913,6 +910,7 @@
 				E1D855B4251205F000778AE9 /* DVBCaptchaHelper.swift in Sources */,
 				E185396024C17ED100CB2D40 /* DVBCommon.swift in Sources */,
 				E11B9D6324BF4A040061E063 /* AppDelegate.swift in Sources */,
+				E1899B262536EF7800A2DF01 /* DVBThreadNode.swift in Sources */,
 				E1F05E1D24D00CDB00D6D3EE /* DVBUrls.swift in Sources */,
 				E1C99CEC24D7EC7100B88C94 /* UrlNinja.swift in Sources */,
 			);

@@ -10,19 +10,19 @@ import Foundation
 import UIKit
 
 @objc class DVBPostStyler: NSObject {
-    @objc class func postCellBackgroundColor() -> UIColor? {
+    @objc class func postCellBackgroundColor() -> UIColor {
         return DVBBoardStyler.threadCellBackgroundColor()
     }
 
-    @objc class func postCellInsideBackgroundColor() -> UIColor? {
+    @objc class func postCellInsideBackgroundColor() -> UIColor {
         return DVBBoardStyler.threadCellInsideBackgroundColor()
     }
 
-    @objc class func textColor() -> UIColor? {
+    @objc class func textColor() -> UIColor {
         return DVBBoardStyler.textColor()
     }
 
-    @objc class func borderColor() -> CGColor? {
+    @objc class func borderColor() -> CGColor {
         return DVBBoardStyler.borderColor()
     }
 

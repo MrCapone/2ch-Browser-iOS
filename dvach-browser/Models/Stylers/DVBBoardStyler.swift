@@ -11,19 +11,19 @@ import UIKit
 
 @objc class DVBBoardStyler: NSObject {
 // MARK: - Thread list
-    @objc class func threadCellBackgroundColor() -> UIColor? {
+    @objc class func threadCellBackgroundColor() -> UIColor {
         return self.isDarkTheme() ? UIColor.black : UIColor(red: 0.95, green: 0.96, blue: 0.97, alpha: 1)
     }
 
-    @objc class func threadCellInsideBackgroundColor() -> UIColor? {
+    @objc class func threadCellInsideBackgroundColor() -> UIColor {
         return self.isDarkTheme() ? CELL_BACKGROUND_COLOR : UIColor.white
     }
 
-    @objc class func textColor() -> UIColor? {
+    @objc class func textColor() -> UIColor {
         return self.isDarkTheme() ? DARK_CELL_TEXT_COLOR : UIColor.black
     }
 
-    @objc class func borderColor() -> CGColor? {
+    @objc class func borderColor() -> CGColor {
         let color = self.isDarkTheme() ? UIColor(red: 38.0 / 255.0, green: 38.0 / 255.0, blue: 38.0 / 255.0, alpha: 1) : UIColor.lightGray
         return color.cgColor
     }

@@ -51,7 +51,7 @@ import Foundation
             UIGraphicsBeginImageContextWithOptions(image.size , true, scale)
             
             // Fill background with color
-            DVBPostStyler.postCellInsideBackgroundColor()?.set()
+            DVBPostStyler.postCellInsideBackgroundColor().set()
             UIRectFill(CGRect(x: 0, y: 0, width: rect.size.width, height: rect.size.height))
             
             UIBezierPath(roundedRect: rect, cornerRadius: DVBPostStyler.cornerRadius()).addClip()
