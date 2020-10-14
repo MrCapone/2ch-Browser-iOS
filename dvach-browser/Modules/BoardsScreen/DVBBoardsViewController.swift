@@ -122,7 +122,7 @@ class DVBBoardsViewController: DVBCommonTableViewController, DVBAlertGeneratorDe
         })
     }
 
-    func `open`(withBoardId boardId: String?, pages: Int) {
+    func open(withBoardId boardId: String?, pages: Int) {
         // Cancel opening if app isn't allowed to open the board
         if !(boardsModel?.canOpenBoard(withBoardId: boardId) ?? false) {
             let alert = DVBAlertGenerator.ageCheckAlert()

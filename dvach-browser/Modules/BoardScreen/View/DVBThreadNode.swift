@@ -44,7 +44,7 @@ class DVBThreadNode: ASCellNode, ASNetworkImageNodeDelegate {
         mediaNode.style.height = ASDimensionMakeWithPoints(DVBBoardStyler.mediaSize())
         mediaNode.url = URL(string: thread.thumbnail)
         mediaNode.delegate = self
-        mediaNode.imageModificationBlock = { image, traitCollection in
+        mediaNode.imageModificationBlock = { (image, traitCollection) -> UIImage? in
             var modifiedImage: UIImage?
             let rect = CGRect(x: 0, y: 0, width: image.size.width , height: image.size.height )
             UIGraphicsBeginImageContextWithOptions(image.size , false, UIScreen.main.scale)
@@ -52,7 +52,7 @@ class DVBThreadNode: ASCellNode, ASNetworkImageNodeDelegate {
             image.draw(in: rect)
             modifiedImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
-            return modifiedImage!
+            return modifiedImage
         }
         addSubnode(mediaNode)
     }

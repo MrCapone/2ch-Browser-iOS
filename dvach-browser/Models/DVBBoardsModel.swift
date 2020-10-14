@@ -17,7 +17,7 @@ private let BOARD_CATEGORIES_PLIST_FILENAME = "BoardCategories"
 
 @objc protocol DVBBoardsModelDelegate: NSObjectProtocol {
     func updateTable()
-    func `open`(withBoardId boardId: String?, pages: Int)
+    func open(withBoardId boardId: String?, pages: Int)
     func openThread(with urlNinja: UrlNinja?)
 }
 

@@ -36,7 +36,7 @@ import Mantle
     }
     
     /// Load next page for the current board
-    @objc func loadNextPage(withCompletion completion: @escaping ([DVBThread], Error?) -> Void) {
+    func loadNextPage(withCompletion completion: @escaping ([DVBThread], Error?) -> Void) {
         networking.getThreadsWithBoard(
             boardCode,
             andPage: currentPage,

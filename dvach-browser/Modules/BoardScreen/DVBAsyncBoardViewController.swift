@@ -167,10 +167,10 @@ class DVBAsyncBoardViewController: ASDKViewController<ASDisplayNode>, ASTableDat
                 threadsArray = completionThreadsArray
                 let threadsCountNow = (threadsArray!.count != 0) ? threadsArray!.count : 0
 
-                var mutableIndexPathes: [AnyHashable]? = []
+                var mutableIndexPathes: [IndexPath] = []
 
                 for i in threadsCountWas..<threadsCountNow {
-                    mutableIndexPathes?.append(IndexPath(row: i, section: 0))
+                    mutableIndexPathes.append(IndexPath(row: i, section: 0))
                 }
                 if threadsArray!.count == 0 {
                     navigationItem.rightBarButtonItem?.isEnabled = false
@@ -178,9 +178,7 @@ class DVBAsyncBoardViewController: ASDKViewController<ASDisplayNode>, ASTableDat
                     currentPage = currentPage! + 1
                     // Update only if we have something to show
                     DispatchQueue.main.async(execute: { [self] in
-                        if let mutableIndexPathes = mutableIndexPathes as? [IndexPath] {
-                            tableNode.insertRows(at: mutableIndexPathes, with: .fade)
-                        }
+                        tableNode.insertRows(at: mutableIndexPathes, with: .fade)
                         alreadyLoadingNextPage = false
                         navigationItem.rightBarButtonItem?.isEnabled = true
                     })
@@ -193,12 +191,12 @@ class DVBAsyncBoardViewController: ASDKViewController<ASDisplayNode>, ASTableDat
     }
     
     // MARK: - Routing
-    func openNewThread() {
+    @objc func openNewThread() {
         DVBRouter.openCreateThread(from: self, boardCode: boardCode)
     }
 
     // MARK: - DVBCreatePostViewControllerDelegate
-    func openThred(withCreatedThread threadNum: String?) {
+    @objc func openThred(withCreatedThread threadNum: String?) {
         let thread = DVBThread()
         thread?.num = threadNum!
         DVBRouter.pushThread(
@@ -212,30 +210,42 @@ class DVBAsyncBoardViewController: ASDKViewController<ASDisplayNode>, ASTableDat
     // MARK: - ASTableDataSource & ASTableDelegate
     func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
         // Early return in case of error
-        if indexPath.row >= boardModel.threadsArray?.count ?? 0 {
+        guard let threadsArray = boardModel.threadsArray else {
+            return {
+                return ASCellNode()
+            }
+        }
+        guard indexPath.row < threadsArray.count else {
             return {
                 return ASCellNode()
             }
         }
 
-        let thread = boardModel.threadsArray![indexPath.row]
+        let thread = threadsArray[indexPath.row]
         return { () in
             return DVBThreadNode(thread: thread)
         }
     }
 
     func tableNode(_ tableNode: ASTableNode, willDisplayRowWith node: ASCellNode) {
-        if node.indexPath!.row == boardModel.threadsArray?.count {
+        if let indexPath = node.indexPath, let threadsArray = boardModel.threadsArray, indexPath.row == threadsArray.count {
             loadNextBoardPage()
         }
     }
     
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
-        return boardModel.threadsArray?.count ?? 0 + 1
+        if let threadsArray = boardModel.threadsArray {
+            return threadsArray.count + 1
+        }
+        return 0
     }
 
     func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
-        let thread = boardModel.threadsArray![indexPath.row]
+        guard let threadsArray = boardModel.threadsArray else {
+            return
+        }
+        
+        let thread = threadsArray[indexPath.row]
         DVBRouter.pushThread(
             from: self,
             board: boardCode,
