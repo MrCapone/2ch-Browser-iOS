@@ -9,13 +9,13 @@
 import Foundation
 
 @objc class DVBPostViewModel: NSObject {
-    @objc private(set) var title: String?
-    @objc private(set) var num: String?
-    @objc private(set) var text: NSAttributedString?
+    @objc private(set) var title: String!
+    @objc private(set) var num: String!
+    @objc private(set) var text: NSAttributedString!
     @objc private(set) var index = 0
     @objc private(set) var repliesCount = 0
-    @objc private(set) var thumbs: [String]?
-    @objc private(set) var pictures: [String]?
+    @objc private(set) var thumbs: [String]!
+    @objc private(set) var pictures: [String]!
     @objc var timestamp: NSNumber = 0
 
     @objc init(post: DVBPost?, andIndex index: Int) {
