@@ -13,7 +13,6 @@
 #import "DVBThreadUIGenerator.h"
 #import "dvach_browser-Swift.h"
 #import "ARChromeActivity.h"
-#import "DVBLoadingStatusView.h"
 
 @implementation DVBThreadUIGenerator
 
@@ -148,7 +147,8 @@
 + (UIView *)errorView
 {
   DVBLoadingStatusViewColor color = [[NSUserDefaults standardUserDefaults] boolForKey:SETTING_ENABLE_DARK_THEME] ?  DVBLoadingStatusViewColorDark : DVBLoadingStatusViewColorLight;
-  DVBLoadingStatusView *view = [[DVBLoadingStatusView alloc] initWithMessage:NSLS(@"STATUS_LOADING_ERROR") andStyle:DVBLoadingStatusViewStyleError andColor:color];
+    DVBLoadingStatusView *view = [DVBLoadingStatusView instanceFromNib];
+    [view initLoadingStatusViewWithMessage:NSLS(@"STATUS_LOADING_ERROR") andStyle:DVBLoadingStatusViewStyleError andColor:color];
   return view;
 }
 
