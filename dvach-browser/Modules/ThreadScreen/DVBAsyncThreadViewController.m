@@ -9,7 +9,6 @@
 #import "DVBAsyncThreadViewController.h"
 #import "DVBCommon.h"
 #import "DVBConstants.h"
-#import "DVBThreadModel.h"
 
 #import "DVBThreadUIGenerator.h"
 #import "dvach_browser-Swift.h"

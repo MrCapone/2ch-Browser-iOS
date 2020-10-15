@@ -11,20 +11,20 @@ import YapDatabase
 
 private let DB_FILE = "dvachDB.sqlite"
 
-@objc class DVBDatabaseManager: NSObject {
-    @objc static var dbCollectionThreads: String? {
+class DVBDatabaseManager: NSObject {
+    static var dbCollectionThreads: String? {
         get {
             return "kDbCollectionThreads"
         }
     }
     
-    @objc static var dbCollectionThreadPositions: String? {
+    static var dbCollectionThreadPositions: String? {
         get {
             return "kDbCollectionThreadPositions"
         }
     }
     
-    @objc var database: YapDatabase?
+    var database: YapDatabase?
     
     // MARK: - Construct DB
     static let sharedDatabaseSharedMyManager: DVBDatabaseManager = {
@@ -32,7 +32,7 @@ private let DB_FILE = "dvachDB.sqlite"
         return sharedMyManager
     }()
     
-    @objc class func sharedDatabase() -> DVBDatabaseManager {
+    class func sharedDatabase() -> DVBDatabaseManager {
         // `dispatch_once()` call was converted to a static variable initializer
         return sharedDatabaseSharedMyManager
     }

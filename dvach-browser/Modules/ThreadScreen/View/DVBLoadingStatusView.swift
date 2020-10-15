@@ -29,7 +29,7 @@ private let IMAGE_NAME_ERROR = "LoadingStatusError"
     @IBOutlet private var statusLabel: UILabel!
     
     @objc class func instanceFromNib() -> DVBLoadingStatusView? {
-        let nibName = NSStringFromClass(DVBLoadingStatusView.self)
+        let nibName = String(describing: DVBLoadingStatusView.self)
         if let last = Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)?.last as? DVBLoadingStatusView {
             return last
         }

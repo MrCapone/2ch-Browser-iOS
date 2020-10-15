@@ -9,8 +9,8 @@
 import AsyncDisplayKit
 import Foundation
 
-@objc class DVBPostViewGenerator: NSObject {
-    @objc class func borderNode() -> ASDisplayNode {
+class DVBPostViewGenerator: NSObject {
+    class func borderNode() -> ASDisplayNode {
         let node = ASDisplayNode()
         node.isOpaque = true
         node.borderColor = DVBPostStyler.borderColor()
@@ -21,7 +21,7 @@ import Foundation
         return node
     }
     
-    @objc class func titleNode() -> ASTextNode {
+    class func titleNode() -> ASTextNode {
         let node = ASTextNode()
         node.backgroundColor = DVBPostStyler.postCellInsideBackgroundColor()
         node.truncationMode = NSLineBreakMode.byTruncatingTail
@@ -29,7 +29,7 @@ import Foundation
         return node
     }
     
-    @objc class func textNode(withText text: NSAttributedString) -> ASTextNode {
+    class func textNode(withText text: NSAttributedString) -> ASTextNode {
         let node = ASTextNode()
         node.backgroundColor = DVBPostStyler.postCellInsideBackgroundColor()
         node.attributedText = text
@@ -38,7 +38,7 @@ import Foundation
         return node
     }
     
-    @objc class func mediaNode(withURL url: String?, isWebm: Bool) -> ASNetworkImageNode? {
+    class func mediaNode(withURL url: String?, isWebm: Bool) -> ASNetworkImageNode? {
         let node = ASNetworkImageNode()
         let mediaWidth: CGFloat = DVBPostStyler.ageCheckNotPassed() ? 0 : DVBPostStyler.mediaSize()
         node.backgroundColor = DVBPostStyler.postCellInsideBackgroundColor()
@@ -75,7 +75,7 @@ import Foundation
         return UIImage(named: "Video")
     }
     
-    @objc class func answerButton() -> ASButtonNode? {
+    class func answerButton() -> ASButtonNode? {
         let node = self.button()
         node?.backgroundColor = DVBPostStyler.postCellInsideBackgroundColor()
         let image = UIImage(named: "AnswerToPost")
@@ -84,7 +84,7 @@ import Foundation
         return node
     }
     
-    @objc class func showAnswersButton(withCount count: Int) -> ASButtonNode? {
+    class func showAnswersButton(withCount count: Int) -> ASButtonNode? {
         let node = self.button()
         node?.backgroundColor = DVBPostStyler.postCellInsideBackgroundColor()
         let title = String(format: "%li", count)

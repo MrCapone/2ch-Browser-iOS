@@ -57,7 +57,7 @@ import AFNetworking
     // MARK: - Single thread
     
     /// Get posts for single thread
-    @objc func getPostsWithBoard(_ board: String, andThread threadNum: String, andPostNum postNum: String?, andCompletion completion: @escaping ([String: Any]?) -> Void) {
+    @objc func getPostsWithBoard(_ board: String, andThread threadNum: String, andPostNum postNum: String?, andCompletion completion: @escaping (Any?) -> Void) {
         // building URL for getting JSON-thread-answer from multiple strings
         var requestAddress = "\(DVBUrls.base)/\(board)/res/\(threadNum).json"
         if let postNum = postNum {
@@ -68,7 +68,7 @@ import AFNetworking
         manager.responseSerializer.acceptableContentTypes = Set<String>(["application/json"])
         
         manager.get(requestAddress, parameters: nil, headers: nil, progress: nil, success: { task, responseObject in
-            completion(responseObject as? [String : Any])
+            completion(responseObject)
         }, failure: { task, error in
             print("error: \(error)")
             completion(nil)

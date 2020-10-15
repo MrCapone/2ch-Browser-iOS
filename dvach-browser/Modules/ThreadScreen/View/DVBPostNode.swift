@@ -202,7 +202,7 @@ import AsyncDisplayKit
     }
     
     // MARK: - Actions
-    @objc func answer(_ sender: Any?) {
+    @objc func answer(_ sender: DVBMediaButtonNode?) {
         delegate?.quotePostIndex(index, andText: nil)
     }
 

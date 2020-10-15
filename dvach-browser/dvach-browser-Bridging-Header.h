@@ -5,4 +5,5 @@
 #import "DVBBrowserViewControllerBuilder.h"
 #import "DVBAsyncThreadViewController.h"
 #import "DVBThreadUIGenerator.h"
+#import "DVBPostPreparation.h"
 #import "NSString+HTML.h"
