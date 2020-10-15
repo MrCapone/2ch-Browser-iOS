@@ -135,8 +135,8 @@ import Foundation
             return false
         case .boardThreadLink:
             // Open another thread
-            if urlOpener?.responds(to: #selector(DVBThreadDelegate.openThread(with:))) ?? false {
-                urlOpener?.openThread(with: url)
+            if urlOpener?.responds(to: #selector(DVBThreadDelegate.openThread(withUrlNinja:))) ?? false {
+                urlOpener?.openThread(withUrlNinja: url)
             }
         case .boardThreadPostLink:
             
@@ -150,15 +150,15 @@ import Foundation
             
             // If its the same thread - open it locally from existing posts
             if (threadNum == url.threadId) && (boardCode == url.boardId) {
-                if urlOpener?.responds(to: #selector(DVBThreadDelegate.openThread(with:))) ?? false {
-                    urlOpener?.openPost(with: url)
+                if urlOpener?.responds(to: #selector(DVBThreadDelegate.openPost(withUrlNinja:))) ?? false {
+                    urlOpener?.openPost(withUrlNinja: url)
                 }
                 
                 return true
             } else {
                 // Open another thread
-                if urlOpener?.responds(to: #selector(DVBThreadDelegate.openThread(with:))) ?? false {
-                    urlOpener?.openThread(with: url)
+                if urlOpener?.responds(to: #selector(DVBThreadDelegate.openThread(withUrlNinja:))) ?? false {
+                    urlOpener?.openThread(withUrlNinja: url)
                 }
             }
         default:

@@ -220,17 +220,16 @@ import AsyncDisplayKit
     }
 
     // MARK: - ASTextNodeDelegate
-    func textNode(_ textNode: ASTextNode?, tappedLinkAttribute attribute: String?, value: Any?, at point: CGPoint, textRange: NSRange) {
-        if (delegate == nil) || !(value is NSURL) {
+    func textNode(_ textNode: ASTextNode!, tappedLinkAttribute attribute: String!, value: Any!, at point: CGPoint, textRange: NSRange) {
+        guard let delegate = delegate, let url = value as? URL else {
             return
         }
-        let url = value as? URL
         let urlNinja = UrlNinja.un(withUrl: url)
-
         
-        if let isLocalPostLink = delegate?.isLinkInternal(withLink: urlNinja), isLocalPostLink {
+        let isLocalPostLink = delegate.isLinkInternal(withLink: urlNinja)
+        if isLocalPostLink {
             return
         }
-        delegate?.share(withUrl: url?.absoluteString ?? "")
+        delegate.share(withUrl: url.absoluteString)
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 @objc protocol DVBCreatePostViewControllerDelegate: NSObjectProtocol {
     /// Open thread after creating
-    @objc func openThred(withCreatedThread threadNum: String?)
+    @objc optional func openThred(withCreatedThread threadNum: String?)
     /// Update thread after posting
     @objc optional func updateThreadAfterPosting()
 }

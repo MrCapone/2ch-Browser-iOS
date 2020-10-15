@@ -314,7 +314,7 @@ import Mantle
             if let createdThreadNum = createdThreadNum {
                 weak var strongDelegate = createPostViewControllerDelegate
                 if strongDelegate?.responds(to: #selector(DVBCreatePostViewControllerDelegate.openThred(withCreatedThread:))) ?? false {
-                    strongDelegate?.openThred(withCreatedThread: createdThreadNum)
+                    strongDelegate?.openThred!(withCreatedThread: createdThreadNum)
                 }
             }
         } else {

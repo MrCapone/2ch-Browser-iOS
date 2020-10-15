@@ -16,7 +16,7 @@ import UIKit
     @objc func share(withUrl url: String)
     @objc func isLinkInternal(withLink url: UrlNinja) -> Bool
     /// Open single post
-    @objc func openPost(with urlNinja: UrlNinja)
+    @objc func openPost(withUrlNinja urlNinja: UrlNinja)
     /// Open whole new thread
-    @objc func openThread(with urlNinja: UrlNinja)
+    @objc func openThread(withUrlNinja urlNinja: UrlNinja)
 }
