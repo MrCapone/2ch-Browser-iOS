@@ -34,7 +34,7 @@
 		A1FC043E1E5A0F7A008C3577 /* DVBAsyncThreadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FC043D1E5A0F7A008C3577 /* DVBAsyncThreadViewController.m */; };
 		A1FC04441E5A0FF3008C3577 /* DVBPostPreparation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FC04431E5A0FF3008C3577 /* DVBPostPreparation.m */; };
 		A1FC044D1E5A1064008C3577 /* DVBBrowserViewControllerBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FC044C1E5A1064008C3577 /* DVBBrowserViewControllerBuilder.m */; };
-		A1FC04501E5A10C2008C3577 /* DVBThreadUIGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FC044F1E5A10C2008C3577 /* DVBThreadUIGenerator.m */; };
+		E1166A58253976C30015EBA8 /* DVBThreadUIGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1166A57253976C30015EBA8 /* DVBThreadUIGenerator.swift */; };
 		E11AF58425380FCC005DF7C0 /* DVBMediaButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11AF58325380FCC005DF7C0 /* DVBMediaButtonNode.swift */; };
 		E11AF5A7253810F4005DF7C0 /* DVBLoadingStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11AF5A6253810F4005DF7C0 /* DVBLoadingStatusView.swift */; };
 		E11B9D6324BF4A040061E063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11B9D6224BF4A040061E063 /* AppDelegate.swift */; };
@@ -139,10 +139,9 @@
 		A1FC04431E5A0FF3008C3577 /* DVBPostPreparation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DVBPostPreparation.m; path = Modules/ThreadScreen/DVBPostPreparation.m; sourceTree = "<group>"; };
 		A1FC044B1E5A1064008C3577 /* DVBBrowserViewControllerBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DVBBrowserViewControllerBuilder.h; path = Modules/ThreadScreen/DVBBrowserViewControllerBuilder.h; sourceTree = "<group>"; };
 		A1FC044C1E5A1064008C3577 /* DVBBrowserViewControllerBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DVBBrowserViewControllerBuilder.m; path = Modules/ThreadScreen/DVBBrowserViewControllerBuilder.m; sourceTree = "<group>"; };
-		A1FC044E1E5A10C2008C3577 /* DVBThreadUIGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DVBThreadUIGenerator.h; path = Modules/ThreadScreen/DVBThreadUIGenerator.h; sourceTree = "<group>"; };
-		A1FC044F1E5A10C2008C3577 /* DVBThreadUIGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DVBThreadUIGenerator.m; path = Modules/ThreadScreen/DVBThreadUIGenerator.m; sourceTree = "<group>"; };
 		DA6D360509028339F31549C7 /* Pods_BasePods_dvach_browser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BasePods_dvach_browser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB2041C9957E17E7EBCCE65F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1166A57253976C30015EBA8 /* DVBThreadUIGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DVBThreadUIGenerator.swift; path = Modules/ThreadScreen/DVBThreadUIGenerator.swift; sourceTree = "<group>"; };
 		E11AF58325380FCC005DF7C0 /* DVBMediaButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DVBMediaButtonNode.swift; path = Modules/ThreadScreen/View/DVBMediaButtonNode.swift; sourceTree = "<group>"; };
 		E11AF5A6253810F4005DF7C0 /* DVBLoadingStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DVBLoadingStatusView.swift; path = Modules/ThreadScreen/View/DVBLoadingStatusView.swift; sourceTree = "<group>"; };
 		E11B9D6124BF4A040061E063 /* dvach-browser-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dvach-browser-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -554,8 +553,7 @@
 				A1FC04431E5A0FF3008C3577 /* DVBPostPreparation.m */,
 				A1FC044B1E5A1064008C3577 /* DVBBrowserViewControllerBuilder.h */,
 				A1FC044C1E5A1064008C3577 /* DVBBrowserViewControllerBuilder.m */,
-				A1FC044E1E5A10C2008C3577 /* DVBThreadUIGenerator.h */,
-				A1FC044F1E5A10C2008C3577 /* DVBThreadUIGenerator.m */,
+				E1166A57253976C30015EBA8 /* DVBThreadUIGenerator.swift */,
 			);
 			name = ThreadScreen;
 			sourceTree = "<group>";
@@ -878,7 +876,6 @@
 				E185AD6124D4299D00EC958B /* DVBBoard.swift in Sources */,
 				E17DA0D424DBFAAE00ABADFF /* DVBCaptchaManager.swift in Sources */,
 				E1E4AB5624C0668900CB9263 /* DVBDefaultsManager.swift in Sources */,
-				A1FC04501E5A10C2008C3577 /* DVBThreadUIGenerator.m in Sources */,
 				E17688A3252DBAC5005FBAAC /* DVBAlertGenerator.swift in Sources */,
 				E150A32024E690FB00C4AA88 /* DVBMediaOpener.swift in Sources */,
 				E1986D84253577C500CCE5FF /* DVBCreatePostScrollView.swift in Sources */,
@@ -894,6 +891,7 @@
 				E1986D722535773600CCE5FF /* DVBPostPhotoContainerView.swift in Sources */,
 				E17DA0D824DBFC7900ABADFF /* DVBPostViewModel.swift in Sources */,
 				A1FC04441E5A0FF3008C3577 /* DVBPostPreparation.m in Sources */,
+				E1166A58253976C30015EBA8 /* DVBThreadUIGenerator.swift in Sources */,
 				E185395E24C1794A00CB2D40 /* DVBNetworking.swift in Sources */,
 				E1D855B22512047A00778AE9 /* NSNotification+DVBBookmarkThreadNotification.swift in Sources */,
 				E1D855B4251205F000778AE9 /* DVBCaptchaHelper.swift in Sources */,
