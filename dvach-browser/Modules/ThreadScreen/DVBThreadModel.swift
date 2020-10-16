@@ -75,7 +75,7 @@ import YapDatabase
     }
     
     /// Entirely reload post list in the thread
-    @objc func reloadThread(withCompletion completion: @escaping ([AnyHashable]?) -> Void) {
+    @objc func reloadThread(withCompletion completion: @escaping ([DVBPost]?) -> Void) {
         guard let boardCode = boardCode, let threadNum = threadNum else {
             print("No Board code or Thread number")
             completion(nil)
@@ -331,7 +331,7 @@ import YapDatabase
     }
     
     // MARK: - DB
-    func writeToDb(withPosts posts: [AnyHashable]?, andThreadNum threadNumb: String?, andCompletion callback: @escaping () -> Void) {
+    func writeToDb(withPosts posts: [DVBPost]?, andThreadNum threadNumb: String?, andCompletion callback: @escaping () -> Void) {
         // Get a connection to the database (can have multiple for concurrency)
         let connection = database?.newConnection()
         // Add an object

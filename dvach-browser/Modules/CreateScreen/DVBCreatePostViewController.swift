@@ -273,11 +273,8 @@ import Mantle
     }
 
     /// Find image view to show image to upload in
-    func imageViewToShowUploadingImage(withArrayOfViews arrayOfViews: [AnyHashable]?) -> DVBPictureToSendPreviewImageView? {
+    func imageViewToShowUploadingImage(withArrayOfViews arrayOfViews: [UIView]?) -> DVBPictureToSendPreviewImageView? {
         for view in arrayOfViews ?? [] {
-            guard let view = view as? UIView else {
-                continue
-            }
             let isItImageView = type(of: view) === DVBPictureToSendPreviewImageView.self
             if isItImageView {
                 let imageView = view as? DVBPictureToSendPreviewImageView
@@ -290,11 +287,8 @@ import Mantle
     }
     
     /// Find image view's with PLUS icon container
-    func viewPlusContainer(withArrayOfViews arrayOfViews: [AnyHashable]?) -> UIView? {
+    func viewPlusContainer(withArrayOfViews arrayOfViews: [UIView]?) -> UIView? {
         for view in arrayOfViews ?? [] {
-            guard let view = view as? UIView else {
-                continue
-            }
             let isItImageView = type(of: view) === DVBAddPhotoIconImageViewContainer.self
             if isItImageView {
 

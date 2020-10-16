@@ -23,7 +23,7 @@ import UIKit
         super.init()
     }
 
-    @objc  func openMedia(withUrlString fullUrlString: String, andThumbImagesArray thumbImagesArray: [AnyHashable], andFullImagesArray fullImagesArray: [AnyHashable]) {
+    @objc  func openMedia(withUrlString fullUrlString: String, andThumbImagesArray thumbImagesArray: [String], andFullImagesArray fullImagesArray: [String]) {
         if fullUrlString == "" {
             // Empty link case
             return
@@ -44,7 +44,7 @@ import UIKit
         }
     }
     
-    func createAndPushGallery(withUrlString urlString: String, andThumbImagesArray thumbImagesArray: [AnyHashable], andFullImagesArray fullImagesArray: [AnyHashable]) {
+    func createAndPushGallery(withUrlString urlString: String, andThumbImagesArray thumbImagesArray: [String], andFullImagesArray fullImagesArray: [String]) {
         let indexForImageShowing = fullImagesArray.firstIndex(of: urlString)!
 
         if indexForImageShowing < (fullImagesArray.count) {

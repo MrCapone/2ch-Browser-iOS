@@ -564,7 +564,7 @@ private let BOARD_CATEGORIES_PLIST_FILENAME = "BoardCategories"
             forResource: "BadBoards",
             ofType: "plist")
         
-        let badBoards = NSArray(contentsOfFile: plistPath ?? "") as? [AnyHashable]
+        let badBoards = NSArray(contentsOfFile: plistPath ?? "") as? [String]
         
         if !(badBoards?.contains(boardId ?? "") ?? false) {
             return true
