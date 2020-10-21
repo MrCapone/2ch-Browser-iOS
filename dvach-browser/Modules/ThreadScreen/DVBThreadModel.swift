@@ -172,7 +172,9 @@ import YapDatabase
                                                     }
                                                 }
                                                 
-                                                post?.repliesTo = repliesToArray
+                                                if let repliesToArray = repliesToArray {
+                                                    post?.repliesTo = NSMutableArray(array: repliesToArray)
+                                                }
                                                 
                                                 post?.thumbPathesArray = singlePostThumbPathesArrayMutable
                                                 
