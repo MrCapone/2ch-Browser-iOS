@@ -9,19 +9,13 @@
 import Foundation
 
 class DVBPostPreparation: NSObject {
-    private var repliesToPrivate: [NSString] = []
+    ///  Array of posts that have been REPLIED BY current post
+    var repliesTo: [String] = []
     // need to know to generate replies
     private var boardId: String?
     // need to know to generate replies
     private var threadId: String?
     private var bodyFontDescriptor: UIFontDescriptor?
-    
-    ///  Array of posts that have been REPLIED BY current post
-    var repliesToArrayForPost: [NSString] {
-        get {
-            return repliesToPrivate
-        }
-    }
     
     ///  Init method with board and thread infos
     ///
@@ -50,23 +44,26 @@ class DVBPostPreparation: NSObject {
     ///
     ///  - Returns: attributed string with 2ch markup
     func commentWithMarkdown(withComments comment: String?) -> NSAttributedString? {
+        guard  var comment = comment else {
+            return nil
+        }
+        
         let bodyFontSize = bodyFontDescriptor?.pointSize
         
-        var comment = comment
         // чистка исходника и посильная замена хтмл-литералов
-        comment = comment?.replacingOccurrences(of: "\n", with: "")
+        comment = comment.replacingOccurrences(of: "\n", with: "")
         //comment = comment?.replacingOccurrences(of: "\r\n", with: "\n")
-        comment = comment?.replacingOccurrences(of: "<br />", with: "\n")
-        comment = comment?.replacingOccurrences(of: "<br/>", with: "\n")
-        comment = comment?.replacingOccurrences(of: "<br>", with: "\n")
-        comment = comment?.replacingOccurrences(of: "&#39;", with: "'")
-        comment = comment?.replacingOccurrences(of: "&#44;", with: ",")
-        comment = comment?.replacingOccurrences(of: "&#47;", with: "/")
-        comment = comment?.replacingOccurrences(of: "&#92;", with: "\\")
+        comment = comment.replacingOccurrences(of: "<br />", with: "\n")
+        comment = comment.replacingOccurrences(of: "<br/>", with: "\n")
+        comment = comment.replacingOccurrences(of: "<br>", with: "\n")
+        comment = comment.replacingOccurrences(of: "&#39;", with: "'")
+        comment = comment.replacingOccurrences(of: "&#44;", with: ",")
+        comment = comment.replacingOccurrences(of: "&#47;", with: "/")
+        comment = comment.replacingOccurrences(of: "&#92;", with: "\\")
         
-        let range = NSRange(location: 0, length: comment!.count)
+        let range = NSRange(location: 0, length: comment.count)
         
-        let maComment = NSMutableAttributedString(string: comment!)
+        let maComment = NSMutableAttributedString(string: comment)
         maComment.addAttribute(.font, value: UIFont(name: "HelveticaNeue", size: bodyFontSize!)!, range: range)
         
         let commentStyle = NSMutableParagraphStyle()
@@ -86,7 +83,7 @@ class DVBPostPreparation: NSObject {
             em = try NSRegularExpression(pattern: "<em[^>]*>(.*?)</em>", options: [])
         } catch {
         }
-        em?.enumerateMatches(in: comment!, options: [], range: range, using: { result, flags, stop in
+        em?.enumerateMatches(in: comment, options: [], range: range, using: { result, flags, stop in
             if let range1 = result?.range {
                 maComment.addAttribute(.font, value: emFont!, range: range1)
             }
@@ -107,7 +104,7 @@ class DVBPostPreparation: NSObject {
             strong = try NSRegularExpression(pattern: "<strong[^>]*>(.*?)</strong>", options: [])
         } catch {
         }
-        strong?.enumerateMatches(in: comment!, options: [], range: range, using: { result, flags, stop in
+        strong?.enumerateMatches(in: comment, options: [], range: range, using: { result, flags, stop in
             if let range = result?.range {
                 maComment.addAttribute(.font, value: strongFont!, range: range)
             }
@@ -143,9 +140,9 @@ class DVBPostPreparation: NSObject {
             underline = try NSRegularExpression(pattern: "<span class=\"u\">(.*?)</span>", options: [])
         } catch {
         }
-        underline?.enumerateMatches(in: comment!, options: [], range: range, using: { result, flags, stop in
+        underline?.enumerateMatches(in: comment, options: [], range: range, using: { result, flags, stop in
             if let range = result?.range {
-                maComment.addAttribute(.underlineStyle, value: NSUnderlineStyle.single, range: range)
+                maComment.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
             }
         })
         
@@ -156,9 +153,9 @@ class DVBPostPreparation: NSObject {
             strike = try NSRegularExpression(pattern: "<span class=\"s\">(.*?)</span>", options: [])
         } catch {
         }
-        strike?.enumerateMatches(in: comment!, options: [], range: range, using: { result, flags, stop in
+        strike?.enumerateMatches(in: comment, options: [], range: range, using: { result, flags, stop in
             if let range = result?.range {
-                maComment.addAttribute(.strikethroughStyle, value: NSUnderlineStyle.single, range: range)
+                maComment.addAttribute(.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: range)
             }
         })
         
@@ -172,7 +169,7 @@ class DVBPostPreparation: NSObject {
             spoiler = try NSRegularExpression(pattern: "<span class=\"spoiler\">(.*?)</span>", options: [])
         } catch {
         }
-        spoiler?.enumerateMatches(in: comment!, options: [], range: range, using: { result, flags, stop in
+        spoiler?.enumerateMatches(in: comment, options: [], range: range, using: { result, flags, stop in
             if let range = result?.range {
                 maComment.addAttribute(.foregroundColor, value: spoilerColor, range: range)
             }
@@ -185,7 +182,7 @@ class DVBPostPreparation: NSObject {
             quote = try NSRegularExpression(pattern: "<span class=\"unkfunc\">(.*?)</span>", options: [])
         } catch {
         }
-        quote?.enumerateMatches(in: comment!, options: [], range: range, using: { result, flags, stop in
+        quote?.enumerateMatches(in: comment, options: [], range: range, using: { result, flags, stop in
             if let range = result?.range {
                 maComment.addAttribute(.foregroundColor, value: quoteColor, range: range)
             }
@@ -209,22 +206,19 @@ class DVBPostPreparation: NSObject {
         } catch {
         }
         
-        // prepare repliesTo array
-        repliesToPrivate = [NSString]()
-        
         guard let threadId = threadId, let boardId = boardId else {
             NSException(name: NSExceptionName("Not enough params"), reason: "Specify threadId and boardId params please", userInfo: nil).raise()
             fatalError()
         }
         
         link?.enumerateMatches(
-            in: comment!,
+            in: comment,
             options: [],
             range: range,
             using: { result, flags, stop in
                 var fullLink: String? = nil
                 if let range = result?.range {
-                    fullLink = (comment! as NSString).substring(with: range) as String
+                    fullLink = (comment as NSString).substring(with: range) as String
                 }
                 let linkLinkResult = linkLink?.firstMatch(in: fullLink ?? "", options: [], range: NSRange(location: 0, length: fullLink?.count ?? 0))
                 let linkLinkTwoResult = linkLinkTwo?.firstMatch(in: fullLink ?? "", options: [], range: NSRange(location: 0, length: fullLink?.count ?? 0))
@@ -246,8 +240,8 @@ class DVBPostPreparation: NSObject {
                         
                         if (un.boardId == boardId) && (un.threadId == threadId) && un.type == linkType.boardThreadPostLink {
                             if let postId = un.postId {
-                                if !repliesToPrivate.contains(postId as NSString) {
-                                    repliesToPrivate.append(postId as NSString)
+                                if !repliesTo.contains(postId) {
+                                    repliesTo.append(postId)
                                 }
                             }
                         }
@@ -268,7 +262,7 @@ class DVBPostPreparation: NSObject {
             tag = try NSRegularExpression(pattern: "<[^>]*>", options: [])
         } catch {
         }
-        tag?.enumerateMatches(in: comment!, options: [], range: range, using: { result, flags, stop in
+        tag?.enumerateMatches(in: comment, options: [], range: range, using: { result, flags, stop in
             var value: NSValue? = nil
             if let range = result?.range {
                 value = NSValue(range: range)

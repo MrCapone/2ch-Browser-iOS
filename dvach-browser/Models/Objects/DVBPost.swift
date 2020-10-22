@@ -23,9 +23,9 @@ import Mantle
     /// Name of the author of the post
     @objc private var name: String?
     /// Replies to this post from other posts in the thread / need to be mutable, as we change it afer creating
-    @objc var replies: NSMutableArray = NSMutableArray()
+    @objc var replies: [DVBPost] = []
     /// Replies to other posts in this post, children of the same thread / need to be mutable, as we change it afer creating
-    @objc var repliesTo: NSMutableArray?
+    @objc var repliesTo: [String]?
     @objc var timestamp: NSNumber?
     
     @objc class func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]? {

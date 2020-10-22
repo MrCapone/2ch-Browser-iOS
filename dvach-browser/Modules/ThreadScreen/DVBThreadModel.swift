@@ -134,21 +134,21 @@ import YapDatabase
                                                     print("error: %@", error.localizedDescription)
                                                 }
                                                 
-                                                var comment:String! = postDictionary["comment"] as? String
+                                                var comment = postDictionary["comment"] as? String
                                                 
                                                 // Fix bug with crash
-                                                if (comment as NSString).range(of: "ررً").location != NSNotFound {
+                                                if (comment! as NSString).range(of: "ررً").location != NSNotFound {
                                                     let brokenStringHere:String! = NSLS("POST_BAD_SYMBOLS_IN_POST")
                                                     comment = brokenStringHere
                                                 }
                                                 
-                                                let attributedComment:NSAttributedString! = self.postPreparation?.commentWithMarkdown(withComments: comment)
+                                                let attributedComment = self.postPreparation?.commentWithMarkdown(withComments: comment)
                                                 
                                                 post?.comment = attributedComment
                                                 
                                                 postNumMutableArray.append(post!.num!)
                                                 
-                                                let repliesToArray = postPreparation?.repliesToArrayForPost
+                                                let repliesToArray = postPreparation?.repliesTo
                                                 
                                                 let files = postDictionary["files"]
                                                 var singlePostPathesArrayMutable: [String] = []
@@ -173,7 +173,7 @@ import YapDatabase
                                                 }
                                                 
                                                 if let repliesToArray = repliesToArray {
-                                                    post?.repliesTo = NSMutableArray(array: repliesToArray)
+                                                    post?.repliesTo = repliesToArray
                                                 }
                                                 
                                                 post?.thumbPathesArray = singlePostThumbPathesArrayMutable
@@ -200,19 +200,21 @@ import YapDatabase
                                             for post in semiResultArray {
                                                 var delete: [String] = []
                                                 for replyTo in post.repliesTo! {
-                                                    let index = postNumArray!.firstIndex(of: replyTo as! String) ?? NSNotFound
+                                                    let index = postNumArray!.firstIndex(of: replyTo ) ?? NSNotFound
                                                     
                                                     if index != NSNotFound {
                                                         let replyPost = semiResultMutableArray[index]
-                                                        replyPost.replies.add(post)
+                                                        replyPost.replies.append(post)
                                                     } else {
-                                                        delete.append(replyTo as! String)
+                                                        delete.append(replyTo)
                                                     }
                                                 }
                                                 
                                                 let postForChangeReplyTo = semiResultMutableArray[currentPostIndex]
-                                                for replyTo in delete {
-                                                    postForChangeReplyTo.repliesTo?.remove(replyTo)
+                                                if let repliesTo = postForChangeReplyTo.repliesTo {
+                                                    for replyTo in delete {
+                                                        postForChangeReplyTo.repliesTo? = repliesTo.filter({ $0 != replyTo })
+                                                    }
                                                 }
                                                 semiResultMutableArray[currentPostIndex] = postForChangeReplyTo
                                                 
@@ -223,20 +225,22 @@ import YapDatabase
                                             let lastPost = postsArray?.last
                                             lastPostNum = lastPost?.num
                                             
-                                            if postsArray?.count == 0 {
-                                                dropPostsArray()
-                                                
-                                                // back to main
-                                                DispatchQueue.main.async(execute: { [self] in
-                                                    completion(postsArray)
-                                                })
-                                            } else {
-                                                writeToDb(withPosts: postsArray, andThreadNum: threadNum, andCompletion: { [self] in
+                                            if let postsArray = postsArray {
+                                                if postsArray.count == 0 {
+                                                    dropPostsArray()
+                                                    
                                                     // back to main
-                                                    DispatchQueue.main.async(execute: { [self] in
+                                                    DispatchQueue.main.async(execute: { [] in
                                                         completion(postsArray)
                                                     })
-                                                })
+                                                } else {
+                                                    writeToDb(withPosts: postsArray, andThreadNum: threadNum, andCompletion: { [] in
+                                                        // back to main
+                                                        DispatchQueue.main.async(execute: { [] in
+                                                            completion(postsArray)
+                                                        })
+                                                    })
+                                                }
                                             }
                                         })
                                       })
@@ -333,12 +337,12 @@ import YapDatabase
     }
     
     // MARK: - DB
-    func writeToDb(withPosts posts: [DVBPost]?, andThreadNum threadNumb: String?, andCompletion callback: @escaping () -> Void) {
+    func writeToDb(withPosts posts: [DVBPost], andThreadNum threadNumb: String, andCompletion callback: @escaping () -> Void) {
         // Get a connection to the database (can have multiple for concurrency)
         let connection = database?.newConnection()
         // Add an object
         connection?.readWrite({ transaction in
-            transaction.setObject(posts, forKey: threadNumb!, inCollection: DVBDatabaseManager.dbCollectionThreads)
+            transaction.setObject(posts, forKey: threadNumb, inCollection: DVBDatabaseManager.dbCollectionThreads)
             callback()
         })
     }
