@@ -14,6 +14,7 @@
 
 import Foundation
 import Mantle
+import MWFeedParser
 
 @objc class DVBThread: MTLModel, MTLJSONSerializing {
     /// UID of the open post of the thread.
@@ -46,9 +47,9 @@ import Mantle
 
     @objc class func commentJSONTransformer() -> ValueTransformer? {
         return MTLValueTransformer.init(usingForwardBlock: { string, success, error in
-            var comment = string
-            comment = (comment as! NSString).replacingOccurrences(of: "<br>", with: "\n")
-            return (comment as! NSString).convertingHTMLToPlainText()
+            var comment = string as! String
+            comment = comment.replacingOccurrences(of: "<br>", with: "\n")
+            return comment.convertingHTMLToPlainText()
         })
     }
 
@@ -68,9 +69,9 @@ import Mantle
         return title
     }
 
-    @objc class func isTitle(_ title: String?, madeFromComment comment: String?) -> Bool {
-        if (title?.count ?? 0) > 2 && (comment?.count ?? 0) > 2 {
-            if (title as NSString?)?.substring(to: 2) == (comment as NSString?)?.substring(to: 2) {
+    @objc class func isTitle(_ title: String, madeFromComment comment: String) -> Bool {
+        if title.count > 2 && comment.count > 2 {
+            if (title as NSString).substring(to: 2) == (comment as NSString).substring(to: 2) {
                 return true
             }
         }

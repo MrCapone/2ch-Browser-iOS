@@ -18,7 +18,7 @@ abstract_target 'BasePods' do
 	pod 'Texture', '~> 3.0'
 	pod 'TUSafariActivity', '1.0.4'
 	pod 'YapDatabase', '3.0.2'
-	pod 'GTMNSString-HTML', :git => 'https://github.com/siriusdely/GTMNSString-HTML.git'
+	pod 'MWFeedParser', :git => 'https://github.com/mwaterfall/MWFeedParser.git'
 	pod 'ARChromeActivity', '~> 1.0'
 
 	# targets
@@ -33,11 +33,6 @@ post_install do |installer|
             target.build_configurations.each do |config|
                 config.build_settings['OTHER_CFLAGS'] ||= ['$(inherited)']
                 config.build_settings['OTHER_CFLAGS'] << '-Xclang -fcompatibility-qualified-id-block-type-checking'
-            end
-	elsif target.name == "GTMNSString-HTML"
-	    puts "Disabling CLANG_ENABLE_OBJC_ARC for #{target.name}"
-            target.build_configurations.each do |config|
-                config.build_settings['CLANG_ENABLE_OBJC_ARC'] = 'NO'
             end
         end
     end
