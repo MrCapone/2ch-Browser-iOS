@@ -39,8 +39,8 @@ import Mantle
     
     @objc class func numJSONTransformer() -> ValueTransformer? {
         return MTLValueTransformer.init(usingForwardBlock: { (num, success, error) ->String in
-            let numToReturn = String(format: "%ld", (num as! NSNumber).intValue)
-            return numToReturn
+            let numToReturn = num as? NSString ?? NSString(format: "%ld", (num as! NSNumber).intValue)
+            return numToReturn as String
         })
     }
     
