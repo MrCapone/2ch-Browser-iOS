@@ -16,14 +16,14 @@ class DVBAsyncThreadViewController: ASDKViewController<ASDisplayNode>, ASTableDa
     private var tableNode: ASTableNode?
     private var refreshControl: UIRefreshControl?
     private var bottomRefreshControl: UIRefreshControl?
-    private var posts: [DVBPostViewModel]?
+    private var posts: [DVBPostViewModel] = []
     private var allPosts: [DVBPostViewModel]?
     private var autoScrolled = false
     private var alreadyLoading = false
     /// New posts count added with last thread update
-    private var previousPostsCount: NSNumber?
+    private var previousPostsCount: NSNumber = 0
     
-    init(boardCode: String?, andThreadNumber threadNumber: String?, andThreadSubject subject: String?) {
+    init(boardCode: String, andThreadNumber threadNumber: String, andThreadSubject subject: String) {
         let tableNode = ASTableNode(style: UITableView.Style.plain)
         super.init(node: tableNode)
         self.tableNode = tableNode
@@ -37,7 +37,7 @@ class DVBAsyncThreadViewController: ASDKViewController<ASDisplayNode>, ASTableDa
         fillToolbar()
     }
 
-    init(postNum: String?, answers: [DVBPostViewModel]?, allPosts: [DVBPostViewModel]?) {
+    init(postNum: String, answers: [DVBPostViewModel], allPosts: [DVBPostViewModel]?) {
         let tableNode = ASTableNode(style: UITableView.Style.plain)
         super.init(node: tableNode)
         self.tableNode = tableNode
@@ -106,7 +106,7 @@ class DVBAsyncThreadViewController: ASDKViewController<ASDisplayNode>, ASTableDa
         } else {
             if tableNode?.view.tableFooterView is UIActivityIndicatorView {
                 let activity = tableNode?.view.tableFooterView as? UIActivityIndicatorView
-                if posts!.count > 8 {
+                if posts.count > 8 {
                     activity?.startAnimating()
                 } else {
                     activity?.stopAnimating()
@@ -141,7 +141,7 @@ class DVBAsyncThreadViewController: ASDKViewController<ASDisplayNode>, ASTableDa
                 reloadThread()
                 return
             }
-            self.posts = convertPosts(toViewModel: posts!, forAnswer: false)
+            self.posts = convertPosts(toViewModel: posts!, forAnswer: false) ?? []
             DispatchQueue.main.async(execute: { [self] in
                 tableNode!.reloadData()
                 alreadyLoading = false
@@ -165,14 +165,14 @@ class DVBAsyncThreadViewController: ASDKViewController<ASDisplayNode>, ASTableDa
     
     // MARK: - ASTableDataSource & ASTableDelegate
     func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
-        let post = posts![indexPath.row]
+        let post = posts[indexPath.row]
         return { [self] in
             return DVBPostNode(post: post, andDelegate: self, width: view.bounds.size.width)
         }
     }
 
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
-        return posts!.count
+        return posts.count
     }
 
     func scrolledPastBottomThreshold(in tableView: UITableView?) -> Bool {
@@ -228,11 +228,11 @@ class DVBAsyncThreadViewController: ASDKViewController<ASDisplayNode>, ASTableDa
                     return
                 }
                 var newRows: [IndexPath]? = []
-                for i in (self.posts?.count ?? 0)..<(posts?.count ?? 0) {
+                for i in self.posts.count..<posts!.count {
                     let path = IndexPath(row: i, section: 0)
                     newRows?.append(path)
                 }
-                self.posts = convertPosts(toViewModel: posts!, forAnswer: false)
+                self.posts = convertPosts(toViewModel: posts!, forAnswer: false) ?? []
                 DispatchQueue.main.async(execute: { [self] in
                     addTableRows(newRows)
                     checkNewPostsCount()
@@ -266,9 +266,9 @@ class DVBAsyncThreadViewController: ASDKViewController<ASDisplayNode>, ASTableDa
 
     /// Check if server have new posts and scroll if user already scrolled to the end
     func checkNewPostsCount() {
-        let additionalPostCount = posts!.count - previousPostsCount!.intValue
+        let additionalPostCount = posts.count - previousPostsCount.intValue
 
-        if (previousPostsCount!.intValue > 0) && (additionalPostCount > 0) {
+        if (previousPostsCount.intValue > 0) && (additionalPostCount > 0) {
             let newMessagesCount = NSNumber(value: additionalPostCount)
 
             perform(
@@ -277,7 +277,7 @@ class DVBAsyncThreadViewController: ASDKViewController<ASDisplayNode>, ASTableDa
                 afterDelay: 0.5)
         }
 
-        let postsCountNewValue = NSNumber(value: posts!.count)
+        let postsCountNewValue = NSNumber(value: posts.count)
 
         previousPostsCount = postsCountNewValue
 
@@ -313,7 +313,7 @@ class DVBAsyncThreadViewController: ASDKViewController<ASDisplayNode>, ASTableDa
         // Check if difference is not too big (scroll isn't needed if user saw only half of the thread)
         let offsetDifference = tableNode!.view.contentSize.height - tableNode!.view.contentOffset.y - tableNode!.view.bounds.size.height
 
-        if offsetDifference < MAX_OFFSET_DIFFERENCE_TO_SCROLL_AFTER_POSTING && posts!.count > 10 {
+        if offsetDifference < MAX_OFFSET_DIFFERENCE_TO_SCROLL_AFTER_POSTING && posts.count > 10 {
             Timer.scheduledTimer(
                 timeInterval: 2.0,
                 target: self,
@@ -353,11 +353,11 @@ class DVBAsyncThreadViewController: ASDKViewController<ASDisplayNode>, ASTableDa
             from: self,
             postNum: post!.num!,
             answers: convertPosts(toViewModel: post!.replies, forAnswer: true)!,
-            allPosts: allPosts != nil ? allPosts! : posts!)
+            allPosts: allPosts != nil ? allPosts! : posts)
     }
 
     func attachAnswerToComment(withPost index: Int, andText text: String?) {
-        let post = posts![index]
+        let post = posts[index]
         let postNum = post.num
 
         let sharedComment = DVBComment.sharedComment()
@@ -403,7 +403,7 @@ class DVBAsyncThreadViewController: ASDKViewController<ASDisplayNode>, ASTableDa
                 from: self,
                 postNum: post!.num!,
                 answers: convertPosts(toViewModel: [post!], forAnswer: true)!,
-                allPosts: allPosts != nil ? allPosts! : posts!)
+                allPosts: allPosts != nil ? allPosts! : posts)
             return
         } else if (allPosts != nil) {
             // if it didn't work - check our full array
