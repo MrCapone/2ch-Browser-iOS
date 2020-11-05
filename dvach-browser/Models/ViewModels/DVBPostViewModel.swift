@@ -8,17 +8,15 @@
 
 import Foundation
 
-@objc class DVBPostViewModel: NSObject {
-    @objc private(set) var title: String!
-    @objc private(set) var num: String!
-    @objc private(set) var text: NSAttributedString!
-    @objc private(set) var index = 0
-    @objc private(set) var repliesCount = 0
-    @objc private(set) var thumbs: [String]!
-    @objc private(set) var pictures: [String]!
-    @objc var timestamp: NSNumber = 0
+class DVBPostViewModel: DVBPost {
+    private(set) var title: String!
+    private(set) var text: NSAttributedString!
+    private(set) var index = 0
+    private(set) var repliesCount = 0
+    private(set) var thumbs: [String]!
+    private(set) var pictures: [String]!
 
-    @objc init(post: DVBPost?, andIndex index: Int) {
+    init(post: DVBPost?, andIndex index: Int) {
         super.init()
         if let num = post?.num {
             title = String(format: "#%ld • %@ • ", index + 1, num)
@@ -31,9 +29,17 @@ import Foundation
         pictures = post?.pathesArray
         timestamp = post?.timestamp ?? 0
     }
-
+    
+    required init!(coder: NSCoder!) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    required init(dictionary dictionaryValue: [AnyHashable : Any]!) throws {
+        fatalError("init(dictionary:) has not been implemented")
+    }
+    
     /// To prevent multiple nesting
-    @objc func convertToNested() {
+    func convertToNested() {
         repliesCount = 0
     }
 }

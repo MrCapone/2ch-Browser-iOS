@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class DVBPostPreparation: NSObject {
     ///  Array of posts that have been REPLIED BY current post

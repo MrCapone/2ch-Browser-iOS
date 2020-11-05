@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc enum linkType : Int {
+enum linkType : Int {
     case externalLink
     case boardLink
     case boardThreadLink
@@ -17,21 +17,21 @@ import Foundation
 }
 
 
-@objc class UrlNinja: NSObject {
-    @objc var type: linkType
-    @objc var boardId: String?
-    @objc var threadId: String?
-    @objc var postId: String?
-    @objc var threadTitle: String?
-    @objc weak var urlOpener: DVBThreadDelegate?
+class UrlNinja: NSObject {
+    var type: linkType
+    var boardId: String?
+    var threadId: String?
+    var postId: String?
+    var threadTitle: String?
+    weak var urlOpener: DVBThreadDelegate?
     
-    @objc override init() {
+    override init() {
         self.type = .none
         
         super.init()
     }
     
-    @objc convenience init(url: URL?) {
+    convenience init(url: URL?) {
         self.init()
         
         let basicUrlPm = DVBUrls.baseWithoutSchemeForUrlNinja
@@ -113,11 +113,11 @@ import Foundation
         }
     }
     
-    @objc class func un(withUrl url: URL?) -> UrlNinja {
+    class func un(withUrl url: URL?) -> UrlNinja {
         return UrlNinja(url: url)
     }
     
-    @objc func isLinkInternal(withLink url: UrlNinja, andThreadNum threadNum: String?, andBoardCode boardCode: String?) -> Bool {
+    func isLinkInternal(withLink url: UrlNinja, andThreadNum threadNum: String?, andBoardCode boardCode: String?) -> Bool {
         var threadNum = threadNum
         var boardCode = boardCode
         if urlOpener == nil {

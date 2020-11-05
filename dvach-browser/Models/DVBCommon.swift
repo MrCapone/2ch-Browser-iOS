@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 func NSLS(_ key: String) ->String {
     return NSLocalizedString(key, comment: key)

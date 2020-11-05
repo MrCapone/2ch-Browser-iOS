@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // iOS version checkers
 func SYSTEM_VERSION_EQUAL_TO(_ v: String) -> Bool {

@@ -8,6 +8,7 @@
 
 import AsyncDisplayKit
 import TUSafariActivity
+import ARChromeActivity
 
 @objc class DVBThreadUIGenerator: NSObject {
     @objc class func styleTableNode(_ tableNode: ASTableNode?) {

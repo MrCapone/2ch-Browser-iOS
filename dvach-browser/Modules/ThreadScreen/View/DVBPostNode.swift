@@ -33,7 +33,7 @@ import AsyncDisplayKit
         isOpaque = true
         self.delegate = delegate
         index = post.index
-        timestamp = post.timestamp
+        timestamp = post.timestamp!
         // Total border
         borderNode = DVBPostViewGenerator.borderNode()
         addSubnode(borderNode)
